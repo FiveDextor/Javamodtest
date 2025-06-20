@@ -23,5 +23,5 @@ import mindustry.world.consumers.*;
 import mindustry.world.meta.*;
 
 public class OverchargeDrill extends Drill{
-  public int maxCharge = 3
+  public int maxCharge = 3;
 }
