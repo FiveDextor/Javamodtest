@@ -9,20 +9,20 @@ import mindustry.gen.*;
 import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
 
-public class ExampleJavaMod extends Mod{
+public class DextorJavaTest extends Mod{
 
-    public ExampleJavaMod(){
-        Log.info("Loaded ExampleJavaMod constructor.");
+    public DextorJavaTest(){
+        Log.info("Loaded DextorJavaTest constructor.");
 
         //listen for game load event
         Events.on(ClientLoadEvent.class, e -> {
             //show dialog upon startup
             Time.runTask(10f, () -> {
                 BaseDialog dialog = new BaseDialog("frog");
-                dialog.cont.add("The guides come this way").row();
+                dialog.cont.add("Dextor come this way").row();
                 //mod sprites are prefixed with the mod name (this mod is called 'example-java-mod' in its config)
-                dialog.cont.image(Core.atlas.find("example-java-mod-frog")).pad(20f).row();
-                dialog.cont.button("!WARNING! Do you really to try out chaotic ahh stuffs in this mod?", dialog::hide).size(100f, 50f);
+                dialog.cont.image(Core.atlas.find("dextor-java-test-frog")).pad(20f).row();
+                dialog.cont.button("yessir", dialog::hide).size(100f, 50f);
                 dialog.show();
             });
         });
