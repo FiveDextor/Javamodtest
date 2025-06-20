@@ -21,7 +21,7 @@ public class DextorJavaTest extends Mod{
                 BaseDialog dialog = new BaseDialog("frog");
                 dialog.cont.add("Dextor come this way").row();
                 //mod sprites are prefixed with the mod name (this mod is called 'example-java-mod' in its config)
-                dialog.cont.image(Core.atlas.find("dextor-java-test-frog")).pad(20f).row();
+                dialog.cont.image(Core.atlas.find("dextor-java-test-dextor")).pad(20f).row();
                 dialog.cont.button("yessir", dialog::hide).size(100f, 50f);
                 dialog.show();
             });
