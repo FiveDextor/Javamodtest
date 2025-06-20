@@ -5,13 +5,13 @@ import arc.struct.Seq;
 import mindustry.content.Block;
 import mindustry.content.Planets;
 import mindustry.type.block.drill;
-import mindustry.content;
-import mindustry.entities;
-import mindustry.gen;
-import mindustry.graphics;
-import mindustry.type;
-import mindustry.world.consumers;
-import mindustry.world.meta;
+import mindustry.content.*;
+import mindustry.entities.*;
+import mindustry.gen.*;
+import mindustry.graphics.*;
+import mindustry.type.*;
+import mindustry.world.consumers.*;
+import mindustry.world.meta.*;
 
 public class OverchargeDrill extends Drill{
   // Max charge of drill before overcharing
