@@ -1,4 +1,4 @@
-package; testDEX
+package testdex;
 
 import arc.*;
 import arc.graphics.*;
