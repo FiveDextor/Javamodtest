@@ -1,17 +1,10 @@
-package mindustry.world.blocks.production;
+package testdex;
 
-import arc.audio.*;
-import arc.graphics.*;
-import arc.graphics.g2d.*;
-import arc.math.*;
-import arc.util.*;
-import mindustry.content.*;
-import mindustry.entities.*;
-import mindustry.gen.*;
-import mindustry.graphics.*;
-import mindustry.type.*;
-import mindustry.world.consumers.*;
-import mindustry.world.meta.*;
+import arc.graphics.Color;
+import arc.struct.Seq;
+import mindustry.content.Block;
+import mindustry.content.Planets;
+import mindustry.type.block.drill;
 
 public class OverchargeDrill extends Drill{
   // Max charge of drill before overcharing
