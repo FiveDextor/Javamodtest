@@ -23,5 +23,12 @@ import mindustry.world.consumers.*;
 import mindustry.world.meta.*;
 
 public class OverchargeDrill extends Drill{
-  public int maxCharge = 3;
+  /** Max charge of drill before overcharing */
+  public float maxCharge = 10;
+  /** Chance to gain charge from producing an item */
+  public float chargeChance;
+  public float overchargeDrillTime = 150;
+  public float overchargeTime = 6000;
+  public float overchargeRecover = 3000;
+  public Effect overchargeEffect = Fx.smoke;
 }
