@@ -1,4 +1,4 @@
-package dextor;
+package testdex;
 
 import arc.*;
 import arc.util.*;
