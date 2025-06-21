@@ -35,43 +35,8 @@ public class DextorJavaTest extends Mod{
             });
         });
     }
-
     @Override
     public void loadContent() {
-        // Core.app.post() is crucial here to ensure Mindustry's content systems are fully initialized
-        // before your mod attempts to add new blocks.
-        Core.app.post(() -> {
-            // Instantiate your custom drill block.
-            // Mindustry's content loading system will automatically discover this block
-            // because it's instantiated in the loadContent() method of your Mod class.
-            OverchargeDrill customOverchargeDrill = new OverchargeDrill("overcharge-drill");
-
-            // --- Set Block Properties ---
-            // Set basic block properties directly on the instance
-            customOverchargeDrill.size = 2; // Sets the size of the block (e.g., 2x2 tiles)
-            customOverchargeDrill.tier = 3; // Sets the mining tier (what ores it can mine)
-            customOverchargeDrill.drillTime = 180f; // Base drill time in ticks (60 ticks = 1 second)
-
-            // Set custom properties defined in OverchargeDrill
-            customOverchargeDrill.maxCharge = 100f;
-            customOverchargeDrill.chargeChance = 0.1f; // 0.1 for 1 in 10 chance, 1.0 for guaranteed
-            customOverchargeDrill.overchargeDuration = 450f; // Overcharge duration in ticks (e.g., 7.5 seconds)
-            customOverchargeDrill.cooldownDuration = 900f;  // Cooldown duration in ticks (e.g., 15 seconds)
-
-            // Define the resources required to build the drill.
-            // The requirements() method takes Category and BuildVisibility, then the ItemStacks.
-            customOverchargeDrill.requirements(
-                Category.production,
-                BuildVisibility.shown,
-                new ItemStack[]{
-                    new ItemStack(Items.lead, 100),
-                    new ItemStack(Items.titanium, 75),
-                    new ItemStack(Items.silicon, 50)
-                }
-            );
-
-            // Other properties
-            customOverchargeDrill.researchCostMultiplier = 0.5f; // Adjusts research cost
-        });
+        OverchargeDrill customOverchargeDrill = new OverchargeDrill("overcharge-drill");
     }
 }
