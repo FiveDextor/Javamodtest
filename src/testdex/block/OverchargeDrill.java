@@ -1,3 +1,5 @@
+// File: Javamodtest/src/testdex/block/OverchargeDrill.java
+
 package testdex.block; // IMPORTANT: Ensure this matches your directory structure
 
 import arc.Core;
@@ -14,8 +16,8 @@ import mindustry.world.Block;
 import mindustry.world.blocks.production.Drill;
 import mindustry.world.meta.Stat;
 import mindustry.world.meta.StatUnit;
-import mindustry.world.meta.BuildVisibility;
-import mindustry.type.Category; // Added import for Category
+import mindustry.world.meta.BuildVisibility; // Ensure this is imported
+import mindustry.type.Category; // Ensure this is imported
 
 public class OverchargeDrill extends Drill {
 
@@ -33,15 +35,6 @@ public class OverchargeDrill extends Drill {
     public OverchargeDrill(String name) {
         super(name);
         update = true; // Essential: allows updateTile() to be called
-        // Default properties that should be set during block definition
-        // These can be overridden in your mod's main class during initialization
-        // if you want different values for specific instances of the drill.
-        // For example:
-        // this.size = 2;
-        // this.tier = 3;
-        // this.drillTime = 180f; // Base drill time
-        // this.category = Category.production;
-        // this.buildVisibility = BuildVisibility.factory;
     }
 
     // --- Stats for Display (Optional but good practice) ---
@@ -50,9 +43,8 @@ public class OverchargeDrill extends Drill {
         super.setStats(); // Call super method to include base drill stats
         stats.add(Stat.charge, maxCharge);
         stats.add(Stat.boost, (int)(chargeChance * 100) + "%", StatUnit.percent); // Display chance as percentage
-        stats.add(Stat.burstDamage, overchargeDuration / 60f, StatUnit.seconds); // Display overcharge duration
-        stats.add(Stat.cooldown, cooldownDuration / 60f, StatUnit.seconds); // Display cooldown duration
-        // Correctly show actual overcharge drill speed relative to original
+        stats.add(Stat.burstDamage, overchargeDuration / 60f, StatUnit.seconds); // Display overcharge duration (approx)
+        stats.add(Stat.cooldown, cooldownDuration / 60f, StatUnit.seconds); // Display cooldown duration (approx)
         stats.add(Stat.drillSpeed, ((1f / (this.drillTime * overchargeDrillTimeMultiplier)) * 60f), StatUnit.itemsSecond);
     }
 
@@ -100,38 +92,31 @@ public class OverchargeDrill extends Drill {
             }
 
             // Normal operation (not overcharged, not in cooldown)
+            float oldProgress = this.progress; // Capture progress before base update
             super.updateTile(); // Call the base Drill's updateTile for normal mining logic
-        }
 
-        // --- Overriding mineItem to add charge gain with a chance ---
-        @Override
-        protected void mineItem(Block block, int amount) {
-            super.mineItem(block, amount); // Let the base drill do its job first
+            // Detect if an item was successfully mined by the base drill
+            // This heuristic: if progress was high and then reset, and warmup is high, an item was likely produced.
+            // Adjust 0.99f and 0.01f thresholds if your drill's mining cycle behaves differently.
+            if (oldProgress > 0.99f && this.progress < 0.01f && this.warmup > 0.99f && !isOvercharged && !inCooldown) {
+                // Assume 1 unit of "production" per cycle completion
+                if (Mathf.random() < OverchargeDrill.this.chargeChance) {
+                    currentCharge = Mathf.clamp(currentCharge + 1f, 0, maxCharge);
 
-            // Gain charge for each item produced with a chance (if not already full or in cooldown)
-            if (!isOvercharged && !inCooldown) {
-                // Loop 'amount' times, as 'amount' items might have been produced in one go
-                for (int i = 0; i < amount; i++) {
-                    if (Mathf.random() < OverchargeDrill.this.chargeChance) { // Use outer class's chargeChance
-                        currentCharge = Mathf.clamp(currentCharge + 1f, 0, maxCharge); // Gain exactly 1 charge
+                    if (currentCharge >= maxCharge) {
+                        // Full charge, activate overcharge!
+                        isOvercharged = true;
+                        overchargeTimer = overchargeDuration;
+                        currentCharge = maxCharge; // Ensure it stays at max
 
-                        if (currentCharge >= maxCharge) {
-                            // Full charge, activate overcharge!
-                            isOvercharged = true;
-                            overchargeTimer = overchargeDuration;
-                            currentCharge = maxCharge; // Ensure it stays at max
+                        // Set drillTime to be faster during overcharge
+                        drillTime = OverchargeDrill.this.drillTime * overchargeDrillTimeMultiplier; // Use outer class's drillTime
 
-                            // Set drillTime to be faster during overcharge
-                            drillTime = OverchargeDrill.this.drillTime * overchargeDrillTimeMultiplier; // Use outer class's drillTime
-
-                            // Effects and sounds for overcharge activation
-                            overchargeEffect.at(x, y);
-                            if (Vars.net.client()) { // Only play sounds/effects on client side
-                                Sounds.laserbig.at(x, y);
-                                Call.effect(Fx.reactorsmoke, x, y, 0, Color.red);
-                            }
-                            // Break out of the loop if overcharge is triggered, no more charge needed
-                            break;
+                        // Effects and sounds for overcharge activation
+                        overchargeEffect.at(x, y);
+                        if (Vars.net.client()) { // Only play sounds/effects on client side
+                            Sounds.laserbig.at(x, y);
+                            Call.effect(Fx.reactorsmoke, x, y, 0, Color.red);
                         }
                     }
                 }
