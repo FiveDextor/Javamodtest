@@ -62,14 +62,14 @@ public class OverchargeDrill extends Drill {
         public void updateTile() {
             // Logic for when the drill is in cooldown
             if (inCooldown) {
-                cooldownTimer -= Vars.delta; // Decrement cooldown timer
+                cooldownTimer -= Time.delta; // Decrement cooldown timer
                 if (cooldownTimer <= 0) {
                     inCooldown = false; // Exit cooldown state
                     drillTime = OverchargeDrill.this.drillTime; // Reset drillTime to its original value
                     currentCharge = 0f; // Reset charge after cooldown period
                     Fx.reactorExplosion.at(x, y, 0f, Color.green); // Visual effect for exiting cooldown
                     if (Vars.net.client()) { // Play sound only on client side
-                        Sounds.blockRevive.at(x, y);
+                        Sounds.explosion.at(x, y);
                     }
                 }
                 return; // Stop further processing if in cooldown
@@ -77,13 +77,13 @@ public class OverchargeDrill extends Drill {
 
             // Logic for when the drill is in overcharge
             if (isOvercharged) {
-                overchargeTimer -= Vars.delta; // Decrement overcharge timer
+                overchargeTimer -= Time.delta; // Decrement overcharge timer
                 if (overchargeTimer <= 0) {
                     // Overcharge ends, transition to cooldown
                     isOvercharged = false;
                     inCooldown = true;
                     cooldownTimer = cooldownDuration; // Set cooldown timer
-                    Fx.vaporize.at(x, y, 0f, Color.red); // Visual effect for entering cooldown
+                    Fx.reactorExplosion.at(x, y, 0f, Color.green);.at(x, y, 0f, Color.red); // Visual effect for entering cooldown
                     if (Vars.net.client()) { // Play sound only on client side
                         Sounds.explosion.at(x, y);
                     }
