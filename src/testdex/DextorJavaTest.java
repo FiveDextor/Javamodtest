@@ -62,10 +62,12 @@ public class DextorJavaTest extends Mod{
             // The requirements() method takes Category and BuildVisibility, then the ItemStacks.
             customOverchargeDrill.requirements(
                 Category.production,
-                BuildVisibility.shown, // was factory
-                new ItemStack(Items.lead, 100),
-                new ItemStack(Items.titanium, 75),
-                new ItemStack(Items.silicon, 50)
+                BuildVisibility.shown,
+                new ItemStack[]{
+                    new ItemStack(Items.lead, 100),
+                    new ItemStack(Items.titanium, 75),
+                    new ItemStack(Items.silicon, 50)
+                }
             );
 
             // Other properties
