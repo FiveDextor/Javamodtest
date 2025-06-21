@@ -18,11 +18,6 @@ import mindustry.world.meta.StatUnit;
 import mindustry.world.meta.BuildVisibility;
 import mindustry.type.Category;
 
-public static final Stat maxChargeStat = new Stat("max-charge");
-public static final Stat chargeChanceStat = new Stat("charge-chance");
-public static final Stat overchargeDurationStat = new Stat("overcharge-duration");
-public static final Stat cooldownDurationStat = new Stat("cooldown-duration");
-
 public class OverchargeDrill extends Drill {
 
     public static final Stat maxChargeStat = new Stat("max-charge");
