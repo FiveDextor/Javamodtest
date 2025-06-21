@@ -61,8 +61,8 @@ public class DextorJavaTest extends Mod{
             // Define the resources required to build the drill.
             // The requirements() method takes Category and BuildVisibility, then the ItemStacks.
             customOverchargeDrill.requirements(
-                Category.production,        // Sets the tech tree category
-                BuildVisibility.factory,    // Makes it visible in the factory build menu
+                Category.production,
+                BuildVisibility.shown, // was factory
                 new ItemStack(Items.lead, 100),
                 new ItemStack(Items.titanium, 75),
                 new ItemStack(Items.silicon, 50)
