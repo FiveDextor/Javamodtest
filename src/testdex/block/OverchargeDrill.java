@@ -1,4 +1,4 @@
-package your.mod.content; // Adjust package as needed
+package testdex.block; // Adjust package as needed
 
 import arc.Core;
 import arc.graphics.Color;
