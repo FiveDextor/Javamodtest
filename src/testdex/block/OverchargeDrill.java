@@ -18,6 +18,11 @@ import mindustry.world.meta.StatUnit;
 import mindustry.world.meta.BuildVisibility;
 import mindustry.type.Category;
 
+public static final Stat maxChargeStat = new Stat("max-charge");
+public static final Stat chargeChanceStat = new Stat("charge-chance");
+public static final Stat overchargeDurationStat = new Stat("overcharge-duration");
+public static final Stat cooldownDurationStat = new Stat("cooldown-duration");
+
 public class OverchargeDrill extends Drill {
 
     // --- Configurable Drill Properties ---
@@ -46,6 +51,10 @@ public class OverchargeDrill extends Drill {
         stats.add(Stat.name("charge-chance"), (int)(chargeChance * 100) + "%", StatUnit.percent);
         stats.add(Stat.name("overcharge-duration"), overchargeDuration / 60f, StatUnit.seconds);
         stats.add(Stat.name("cooldown-duration"), cooldownDuration / 60f, StatUnit.seconds);
+        stats.add(maxChargeStat, maxCharge, StatUnit.none);
+        stats.add(chargeChanceStat, (int)(chargeChance * 100) + "%", StatUnit.percent);
+        stats.add(overchargeDurationStat, overchargeDuration / 60f, StatUnit.seconds);
+        stats.add(cooldownDurationStat, cooldownDuration / 60f, StatUnit.seconds);
         
         // Display the effective drill speed during overcharge
         stats.add(Stat.drillSpeed, ((1f / (this.drillTime * overchargeDrillTimeMultiplier)) * 60f), StatUnit.itemsSecond);
