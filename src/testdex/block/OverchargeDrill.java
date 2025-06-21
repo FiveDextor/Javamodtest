@@ -83,7 +83,8 @@ public class OverchargeDrill extends Drill {
                     isOvercharged = false;
                     inCooldown = true;
                     cooldownTimer = cooldownDuration; // Set cooldown timer
-                    Fx.reactorExplosion.at(x, y, 0f, Color.green);.at(x, y, 0f, Color.red); // Visual effect for entering cooldown
+                    Fx.reactorExplosion.at(x, y, 0f, Color.green); // Visual effect for entering cooldown
+                    Fx.reactorExplosion.at(x, y, 0f, Color.red);
                     if (Vars.net.client()) { // Play sound only on client side
                         Sounds.explosion.at(x, y);
                     }
