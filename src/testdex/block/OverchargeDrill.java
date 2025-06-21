@@ -41,10 +41,10 @@ public class OverchargeDrill extends Drill {
 
         // Add custom stats using Stat.name() for flexibility.
         // You'll need to define these string keys in your mod's bundle.properties file for proper display.
-        stats.add(Stat.name("chargeCapacity"), maxCharge, StatUnit.none);
-        stats.add(Stat.name("chargeChance"), (int)(chargeChance * 100) + "%", StatUnit.percent);
-        stats.add(Stat.name("overchargeDuration"), overchargeDuration / 60f, StatUnit.seconds); // Convert ticks to seconds
-        stats.add(Stat.name("cooldownDuration"), cooldownDuration / 60f, StatUnit.seconds);     // Convert ticks to seconds
+        stats.add(Stat.value, maxCharge, StatUnit.none);
+        stats.add(Stat.value, (int)(chargeChance * 100) + "%", StatUnit.percent);
+        stats.add(Stat.value, overchargeDuration / 60f, StatUnit.seconds);
+        stats.add(Stat.value, cooldownDuration / 60f, StatUnit.seconds);
         
         // Display the effective drill speed during overcharge
         stats.add(Stat.drillSpeed, ((1f / (this.drillTime * overchargeDrillTimeMultiplier)) * 60f), StatUnit.itemsSecond);
