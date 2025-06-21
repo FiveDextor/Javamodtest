@@ -25,6 +25,11 @@ public static final Stat cooldownDurationStat = new Stat("cooldown-duration");
 
 public class OverchargeDrill extends Drill {
 
+    public static final Stat maxChargeStat = new Stat("max-charge");
+    public static final Stat chargeChanceStat = new Stat("charge-chance");
+    public static final Stat overchargeDurationStat = new Stat("overcharge-duration");
+    public static final Stat cooldownDurationStat = new Stat("cooldown-duration");
+
     // --- Configurable Drill Properties ---
     public float maxCharge = 100f; // Max charge capacity for overcharge
     public float chargeChance = 0.5f; // Chance (0.0 to 1.0) to gain 1 charge per item produced
