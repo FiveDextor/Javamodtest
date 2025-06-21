@@ -20,30 +20,47 @@ jobs:
 
     - name: Install Android SDK # NEW: Essential for './gradlew deploy' for cross-platform builds
       run: |
-        # Create a directory for the Android SDK
-        mkdir -p "${{ runner.temp }}/android-sdk/cmdline-tools"
-        # Download and unzip the Android command-line tools
+        # Define the SDK root directory
+        SDK_ROOT="${{ runner.temp }}/android-sdk"
+        # Define the path where the command-line tools (bin, lib, etc.) will reside
+        CMDLINE_TOOLS_LATEST_DIR="${SDK_ROOT}/cmdline-tools/latest"
+
+        # Create the necessary directories for the Android SDK
+        mkdir -p "${CMDLINE_TOOLS_LATEST_DIR}"
+
+        # Download the Android command-line tools zip
         wget -q https://dl.google.com/android/repository/commandlinetools-linux-8583979_latest.zip -O android-cmdline-tools.zip
-        unzip -q android-cmdline-tools.zip -d "${{ runner.temp }}/android-sdk/cmdline-tools/latest"
-        # Set ANDROID_HOME environment variable for this job's duration
-        echo "ANDROID_HOME=${{ runner.temp }}/android-sdk" >> $GITHUB_ENV
-        # Accept licenses and install platform and build-tools (using common API levels)
-        # We use 'yes |' to automatically accept licenses, which is common in CI environments.
-        # android-33 and build-tools;33.0.0 are common. You can try android-34 if issues arise.
-        yes | "${{ runner.temp }}/android-sdk/cmdline-tools/latest/bin/sdkmanager" --licenses
-        "${{ runner.temp }}/android-sdk/cmdline-tools/latest/bin/sdkmanager" "platforms;android-33" "build-tools;33.0.0"
+        
+        # Unzip the contents of the 'cmdline-tools' folder *inside* the zip directly into the 'latest' directory.
+        # The zip typically contains a top-level folder like 'cmdline-tools/'. We want its *contents* directly under 'latest'.
+        unzip -q android-cmdline-tools.zip -d "${CMDLINE_TOOLS_LATEST_DIR}" # This extracts into CMDLINE_TOOLS_LATEST_DIR/cmdline-tools/
+        mv "${CMDLINE_TOOLS_LATEST_DIR}/cmdline-tools/"* "${CMDLINE_TOOLS_LATEST_DIR}/" # Move contents up one level
+        rmdir "${CMDLINE_TOOLS_LATEST_DIR}/cmdline-tools" # Remove the now-empty nested directory
+
+        # Set ANDROID_HOME environment variable for all subsequent steps in this job
+        echo "ANDROID_HOME=${SDK_ROOT}" >> $GITHUB_ENV
+        # Add the sdkmanager's binary path to the system's PATH environment variable
+        echo "${CMDLINE_TOOLS_LATEST_DIR}/bin" >> $GITHUB_PATH
+
+        # Accept Android SDK licenses automatically (required for sdkmanager to install packages)
+        # 'yes |' pipes 'y' to sdkmanager's license prompts.
+        sdkmanager --licenses
+
+        # Install specific Android platform and build-tools packages
+        # android-33 and build-tools;33.0.0 are common versions. You can try android-34 if needed for your project.
+        sdkmanager "platforms;android-33" "build-tools;33.0.0"
 
     - name: Grant execute permission for gradlew
-      run: chmod +x gradlew # Make the Gradle wrapper executable
+      run: chmod +x gradlew # Make the Gradle wrapper script executable
 
     - name: Build mod jar (Desktop & Android)
-      # This command builds a JAR compatible with both desktop and Android
+      # This command builds a JAR compatible with both desktop and Android, using Gradle.
       run: ./gradlew deploy
 
     - name: Upload built jar file
-      uses: actions/upload-artifact@v4 # Recommended: Use the latest stable version for upload-artifact
+      uses: actions/upload-artifact@v4 # Recommended: Use the latest stable version for uploading artifacts
       with:
-        name: ${{ github.event.repository.name }} # Uses your repo name as the artifact name
-        path: build/libs/${{ github.event.repository.name }}.jar # Path to your compiled JAR file
+        name: ${{ github.event.repository.name }} # The name of the artifact (will be a .zip file on GitHub)
+        path: build/libs/${{ github.event.repository.name }}.jar # The path to your compiled .jar file
         # If your build.gradle outputs the JAR with a different name (e.g., 'yourmodname-dex.jar'),
-        # adjust this path accordingly. Common pattern for 'deploy' is just the mod name.
+        # adjust this path accordingly. The 'deploy' task usually names it after your mod.
