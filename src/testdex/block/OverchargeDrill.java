@@ -1,10 +1,10 @@
-package testdex;
+package testdex.content;
 
 import arc.graphics.Color;
 import arc.struct.Seq;
 import mindustry.content.Block;
 import mindustry.content.Planets;
-import mindustry.type.block.drill;
+import mindustry.world.blocks.production.Drill;
 import mindustry.content;
 import mindustry.entities;
 import mindustry.gen;
