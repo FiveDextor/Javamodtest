@@ -1,14 +1,3 @@
-I can certainly adjust the ChargeDrill logic to only gain 1 charge per item, with a chance to gain it instead of a fixed amount.
-
-Here's how we'll modify the ChargeDrill class:
-
-Remove chargeGainPerItem: Since it's always 1 charge per successful gain, this variable is no longer needed in its previous form.
-Add chargeChance: A new float variable to define the probability (0.0 to 1.0) of gaining 1 charge.
-Modify mineItem(): Implement the random chance logic before incrementing the currentCharge.
-Here's the updated ChargeDrill class:
-
-Java
-
 package your.mod.content; // Adjust package as needed
 
 import arc.Core;
