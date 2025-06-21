@@ -5,6 +5,7 @@ import arc.graphics.Color;
 import arc.graphics.g2d.Draw;
 import arc.graphics.g2d.Fill;
 import arc.math.Mathf;
+import arc.util.Time;
 import mindustry.Vars;
 import mindustry.content.Fx;
 import mindustry.entities.Effect;
@@ -41,10 +42,10 @@ public class OverchargeDrill extends Drill {
 
         // Add custom stats using Stat.name() for flexibility.
         // You'll need to define these string keys in your mod's bundle.properties file for proper display.
-        stats.add(Stat.value, maxCharge, StatUnit.none);
-        stats.add(Stat.value, (int)(chargeChance * 100) + "%", StatUnit.percent);
-        stats.add(Stat.value, overchargeDuration / 60f, StatUnit.seconds);
-        stats.add(Stat.value, cooldownDuration / 60f, StatUnit.seconds);
+        stats.add(Stat.name("max-charge"), maxCharge, StatUnit.none);
+        stats.add(Stat.name("charge-chance"), (int)(chargeChance * 100) + "%", StatUnit.percent);
+        stats.add(Stat.name("overcharge-duration"), overchargeDuration / 60f, StatUnit.seconds);
+        stats.add(Stat.name("cooldown-duration"), cooldownDuration / 60f, StatUnit.seconds);
         
         // Display the effective drill speed during overcharge
         stats.add(Stat.drillSpeed, ((1f / (this.drillTime * overchargeDrillTimeMultiplier)) * 60f), StatUnit.itemsSecond);
