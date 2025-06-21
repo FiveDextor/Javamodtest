@@ -1,0 +1,49 @@
+# .github/workflows/build.yml
+name: Build Mod # Your workflow name
+
+on: [push, pull_request] # Triggers on pushes and pull requests
+
+jobs:
+  buildJar: # Your job name
+    runs-on: ubuntu-latest # Use a Linux environment for the build
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4 # Recommended: Use the latest stable version for checkout
+
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4 # IMPORTANT: Updated to v4 to fix previous download errors
+      with:
+        java-version: '17' # Mindustry typically requires JDK 17
+        distribution: 'temurin' # A common OpenJDK distribution (e.g., Eclipse Temurin)
+        cache: 'gradle' # Cache Gradle dependencies to speed up subsequent builds
+
+    - name: Install Android SDK # NEW: Essential for './gradlew deploy' for cross-platform builds
+      run: |
+        # Create a directory for the Android SDK
+        mkdir -p "${{ runner.temp }}/android-sdk/cmdline-tools"
+        # Download and unzip the Android command-line tools
+        wget -q https://dl.google.com/android/repository/commandlinetools-linux-8583979_latest.zip -O android-cmdline-tools.zip
+        unzip -q android-cmdline-tools.zip -d "${{ runner.temp }}/android-sdk/cmdline-tools/latest"
+        # Set ANDROID_HOME environment variable for this job's duration
+        echo "ANDROID_HOME=${{ runner.temp }}/android-sdk" >> $GITHUB_ENV
+        # Accept licenses and install platform and build-tools (using common API levels)
+        # We use 'yes |' to automatically accept licenses, which is common in CI environments.
+        # android-33 and build-tools;33.0.0 are common. You can try android-34 if issues arise.
+        yes | "${{ runner.temp }}/android-sdk/cmdline-tools/latest/bin/sdkmanager" --licenses
+        "${{ runner.temp }}/android-sdk/cmdline-tools/latest/bin/sdkmanager" "platforms;android-33" "build-tools;33.0.0"
+
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew # Make the Gradle wrapper executable
+
+    - name: Build mod jar (Desktop & Android)
+      # This command builds a JAR compatible with both desktop and Android
+      run: ./gradlew deploy
+
+    - name: Upload built jar file
+      uses: actions/upload-artifact@v4 # Recommended: Use the latest stable version for upload-artifact
+      with:
+        name: ${{ github.event.repository.name }} # Uses your repo name as the artifact name
+        path: build/libs/${{ github.event.repository.name }}.jar # Path to your compiled JAR file
+        # If your build.gradle outputs the JAR with a different name (e.g., 'yourmodname-dex.jar'),
+        # adjust this path accordingly. Common pattern for 'deploy' is just the mod name.
