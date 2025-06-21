@@ -72,6 +72,4 @@ public class DextorJavaTest extends Mod{
             customOverchargeDrill.researchCostMultiplier = 0.5f; // Adjusts research cost
         });
     }
-    }
-
 }
