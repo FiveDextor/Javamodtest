@@ -43,19 +43,12 @@ public class OverchargeDrill extends Drill {
     // --- Stats for Display in Info Panel (Optional but good practice) ---
     @Override
     public void setStats() {
-        super.setStats(); // Include base drill stats
-
-        // Add custom stats using Stat.name() for flexibility.
-        // You'll need to define these string keys in your mod's bundle.properties file for proper display.
-        stats.add(Stat.name("max-charge"), maxCharge, StatUnit.none);
-        stats.add(Stat.name("charge-chance"), (int)(chargeChance * 100) + "%", StatUnit.percent);
-        stats.add(Stat.name("overcharge-duration"), overchargeDuration / 60f, StatUnit.seconds);
-        stats.add(Stat.name("cooldown-duration"), cooldownDuration / 60f, StatUnit.seconds);
+        super.setStats();
         stats.add(maxChargeStat, maxCharge, StatUnit.none);
         stats.add(chargeChanceStat, (int)(chargeChance * 100) + "%", StatUnit.percent);
         stats.add(overchargeDurationStat, overchargeDuration / 60f, StatUnit.seconds);
         stats.add(cooldownDurationStat, cooldownDuration / 60f, StatUnit.seconds);
-        
+
         // Display the effective drill speed during overcharge
         stats.add(Stat.drillSpeed, ((1f / (this.drillTime * overchargeDrillTimeMultiplier)) * 60f), StatUnit.itemsSecond);
     }
