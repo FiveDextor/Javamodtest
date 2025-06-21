@@ -193,3 +193,23 @@ public class ChargeDrill extends Drill {
         }
     }
 }
+@Override
+protected void mineItem(Block block, int amount) {
+    super.mineItem(block, amount); // Let the base drill do its job first
+
+    // Gain charge for each item produced with a chance (if not already full or in cooldown)
+    if (!isOvercharged && !inCooldown) {
+        // Loop 'amount' times, as 'amount' items might have been produced in one go
+        for (int i = 0; i < amount; i++) {
+            if (Mathf.random() < ChargeDrill.this.chargeChance) { // Check the chance for each item
+                currentCharge = Mathf.clamp(currentCharge + 1f, 0, maxCharge); // Gain exactly 1 charge
+
+                if (currentCharge >= maxCharge) {
+                    // Full charge, activate overcharge!
+                    // ... (rest of the overcharge activation logic) ...
+                    break; // Important: Stop trying to gain more charge if overcharge is triggered
+                }
+            }
+        }
+    }
+}
