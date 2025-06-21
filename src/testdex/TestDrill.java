@@ -1,4 +1,4 @@
-package your.mod;
+package testdex;
 
 import arc.Core;
 import mindustry.Vars;
