@@ -8,4 +8,7 @@ public class OverchargeDrill extends Drill {
   public OverchargeDrill(String name) {
         super(name);
   }
+  public class OverchargeDrillBuild extends DrillBuild {
+  
+  }
 }
