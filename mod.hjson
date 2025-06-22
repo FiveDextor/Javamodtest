@@ -8,7 +8,7 @@ name: "dextor-java-test"
 author: "555okboi"
 
 #the fully qualified main class of the mod
-main: "example.DextorJavaTest"
+main: "testdex.DextorJavaTest"
 
 #the mod description as seen in the mod dialog
 description: "DUDE DON'T CHECK THIS WEIRD STUFFS OUT!!"
