@@ -15,6 +15,8 @@ public class OverchargeDrill extends Drill {
   }
 
   public class OverchargeDrillBuild extends DrillBuild {
+        public float totalCharge = 0;
+        public boolean isOvercharged = false;
         @Override
         public void updateTile(){
             if(timer(timerDump, dumpTime / timeScale)){
@@ -51,6 +53,9 @@ public class OverchargeDrill extends Drill {
                 // This is when we produce an item
                 for(int i = 0; i < amount; i++){
                     offload(dominantItem);
+                }
+                if(Mathf.chance(chargeChance) && isOvercharged == false){
+                    totalCharge += 1
                 }
 
                 progress %= delay;
