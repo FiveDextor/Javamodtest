@@ -37,6 +37,8 @@ public class OverchargeDrill extends Drill {
         public float timeTest = 0;
         @Override
         public void updateTile(){
+            timeTest += 1;
+            if(timeTest > overchargeTime)timeTest = 0;
             if(timer(timerDump, dumpTime / timeScale)){
                 dump(dominantItem != null && items.has(dominantItem) ? dominantItem : null);
             }
