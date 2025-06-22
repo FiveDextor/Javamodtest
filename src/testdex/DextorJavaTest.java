@@ -38,7 +38,7 @@ public class DextorJavaTest extends Mod{
     @Override
     public void loadContent() {
         OverchargeDrill customOverchargeDrill = new OverchargeDrill("overcharge-drill") {{
-            requirements(Category.production, ItemStack.with())
+            requirements(Category.production, ItemStack.with());
             size = 3;
         }};
     }
