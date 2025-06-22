@@ -18,6 +18,13 @@ public class OverchargeDrill extends Drill {
         public float totalCharge = 0;
         public boolean isOvercharged = false;
         @Override
+        public void setBars(){
+            super.setBars();
+
+            addBar("overcharge", (OverchargeDrillBuild e) ->
+                new Bar(() -> Core.bundle.format("bar.drillspeed", e.totalCharge, () -> Pal.ammo, () -> e.totalCharge/maxCharge));
+        }
+        @Override
         public void updateTile(){
             if(timer(timerDump, dumpTime / timeScale)){
                 dump(dominantItem != null && items.has(dominantItem) ? dominantItem : null);
