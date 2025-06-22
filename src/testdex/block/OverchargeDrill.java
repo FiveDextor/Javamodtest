@@ -14,7 +14,7 @@ public class OverchargeDrill extends Drill {
   // Chance to gain charge per 1 items producing, 1 means always gain charge 0 = ... I don't need to tell that you know?
   public float chargeChance = 1;
   // Overcharged drills speed.
-  public float overchargeDrillTime = 300;
+  public float overchargeDrillTimeMultiplier= 300;
   // Overcharged time.
   public float overchargeTime = 15 * 60;
 
@@ -30,10 +30,16 @@ public class OverchargeDrill extends Drill {
   }
   public class OverchargeDrillBuild extends DrillBuild {
         public float totalCharge = 0;
-        public boolean isOvercharged = false;
-
-        public float getOverchargeDrillTime(){
-            return (overchargeDrillTime + hardnessDrillMultiplier * item.hardness) / drillMultipliers.get(item, 1f);
+        public boolean isOvercharging = false;
+        public boolean isOverloading = false;
+        @Override
+        public float getDrillTime(){
+          if(isOvercharging == false && isOverloading == false){
+            return (drillTime + hardnessDrillMultiplier * item.hardness) / drillMultipliers.get(item, 1f);
+          }else if(isOvercharging == true && isOverloading == false){
+            return ((drillTime + hardnessDrillMultiplier * item.hardness) * overchargeDrillTimeMultiplier) / drillMultipliers.get(item, 1f);
+          }else
+            return 0;
         }
         
         @Override
@@ -76,8 +82,8 @@ public class OverchargeDrill extends Drill {
                 // Charge gaining and Overcharging
                 if(Mathf.chance(chargeChance) && isOvercharged == false && totalCharge < maxCharge){
                     totalCharge += 1;
-                }else if (totalCharge >= maxCharge && isOvercharged == false){
-                    isOvercharged = true;
+                }else if (totalCharge >= maxCharge && isOvercharging == false){
+                    isOvercharging = true;
                 }
 
                 progress %= delay;
