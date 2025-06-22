@@ -34,9 +34,6 @@ public class OverchargeDrill extends Drill {
         public boolean isOverloading = false;
         @Override
         public void updateTile(){
-            efficiency = 1;
-            if(overloaded) efficiency = 0;
-            else if (isOvercharging) efficiency = overchargedTimeMultiplier;
             if(timer(timerDump, dumpTime / timeScale)){
                 dump(dominantItem != null && items.has(dominantItem) ? dominantItem : null);
             }
@@ -48,6 +45,7 @@ public class OverchargeDrill extends Drill {
             timeDrilled += warmup * delta();
 
             float delay = getDrillTime(dominantItem);
+            if(isOvercharging)delay == delay * overchargedTimeMultiplier;
 
             if(items.total() < itemCapacity && dominantItems > 0 && efficiency > 0){
                 float speed = Mathf.lerp(1f, liquidBoostIntensity, optionalEfficiency) * efficiency;
