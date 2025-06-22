@@ -45,7 +45,7 @@ public class OverchargeDrill extends Drill {
             timeDrilled += warmup * delta();
 
             float delay = getDrillTime(dominantItem);
-            if(isOvercharging)delay = delay * overchargeTimeMultiplier;
+            if(isOvercharging)delay = delay * overchargeDrillTimeMultiplier;
 
             if(items.total() < itemCapacity && dominantItems > 0 && efficiency > 0){
                 float speed = Mathf.lerp(1f, liquidBoostIntensity, optionalEfficiency) * efficiency;
