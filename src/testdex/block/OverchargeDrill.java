@@ -41,8 +41,8 @@ public class OverchargeDrill extends Drill {
         public void updateTile(){
             if(isOvercharging){
             overchargeTimeC += 1;
-            totalCharge = totalCharge * ((overchargeTime - overchargeTimeC) / overchargeTime);
-            chargeSub = Mathf.ceil(totalCharge * ((overchargeTime - overchargeTimeC) / overchargeTime));
+            totalCharge = maxCharge * ((overchargeTime - overchargeTimeC) / overchargeTime);
+            chargeSub = Mathf.ceil(maxCharge * ((overchargeTime - overchargeTimeC) / overchargeTime));
               if(overchargeTimeC > overchargeTime){
                  overchargeTimeC = 0;
                  chargeSub = 0;
