@@ -40,6 +40,7 @@ public class DextorJavaTest extends Mod{
         OverchargeDrill customOverchargeDrill = new OverchargeDrill("overcharge-drill") {{
             requirements(Category.production, ItemStack.with());
             size = 3;
+            drillTime = 600;
             maxCharge = 40;
             chargeChance = 0.5f;
         }};
