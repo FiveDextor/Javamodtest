@@ -27,11 +27,14 @@ public class OverchargeDrill extends Drill {
         super.setBars();
         addBar("overcharge", (OverchargeDrillBuild e) ->
            new Bar(() -> Core.bundle.format("bar.charge", e.totalCharge), () -> Pal.ammo, () -> e.totalCharge/maxCharge));
+        addBar("timetesting", (OverchargeDrillBuild e) ->
+           new Bar(() -> Core.bundle.format("bar.charge", e.timeTest), () -> Pal.ammo, () -> e.timeTest/overchargeTime));
   }
   public class OverchargeDrillBuild extends DrillBuild {
         public float totalCharge = 0;
         public boolean isOvercharging = false;
         public boolean isOverloading = false;
+        public float timeTest = 0;
         @Override
         public void updateTile(){
             if(timer(timerDump, dumpTime / timeScale)){
