@@ -2,7 +2,7 @@ package testdex.block;
 
 import mindustry.world.blocks.production.Drill;
 import arc.math.Mathf;
-import arc.Core
+import arc.Core;
 import mindustry.ui.Bar;
 import mindustry.graphics.Pal;
 import mindustry.Vars;
