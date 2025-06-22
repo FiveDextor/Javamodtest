@@ -54,8 +54,11 @@ public class OverchargeDrill extends Drill {
                 for(int i = 0; i < amount; i++){
                     offload(dominantItem);
                 }
-                if(Mathf.chance(chargeChance) && isOvercharged == false){
+                // Charge gaining and Overcharging
+                if(Mathf.chance(chargeChance) && isOvercharged == false && totalCharge < maxCharge){
                     totalCharge += 1;
+                }else if (totalCharge >= maxCharge && isOvercharged == false){
+                    isOvercharged = true
                 }
 
                 progress %= delay;
