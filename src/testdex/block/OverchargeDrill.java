@@ -27,26 +27,24 @@ public class OverchargeDrill extends Drill {
   public void setBars() {
       super.setBars();
       addBar("charge", (OverchargeDrillBuild e) ->
-          new Bar(() -> Core.bundle.format("bar.charge", e.totalCharge), () -> Pal.ammo, () -> e.totalCharge / maxCharge));
-      addBar("charge-guage", (OverchargeDrillBuild e) ->
-          new Bar(() -> Core.bundle.format("bar.charge-guage", e.chargeGuage), () -> Pal.ammo, () -> e.chargeGuage / overchargeTime));
-   }
+          new Bar(() -> Core.bundle.format("bar.charge", e.barUI), () -> Pal.ammo, () -> e.barUI / maxCharge));
+  }
   public class OverchargeDrillBuild extends DrillBuild {
         public float totalCharge = 0;
         public boolean isOvercharging = false;
         public boolean isOverloading = false;
         public float overchargeTimeC = 0;
         public float overloadTimeC = 0;
-        public float chargeGuage = 0;
+        public float barUI = 0;
     
         @Override
         public void updateTile(){
             if(isOvercharging){
             overchargeTimeC += 1;
-            chargeGuage = overchargeTime - overchargeTimeC;
+            chargeGuage = totalCharge * ((overchargeTime - overchargeTimeC) / overchargeTime);
               if(overchargeTimeC > overchargeTime){
                  overchargeTimeC = 0;
-                 chargeGuage = 0;
+                 barUI = 0;
                  totalCharge = 0;
                  isOvercharging = false;
                  isOverloading = true;
@@ -98,6 +96,7 @@ public class OverchargeDrill extends Drill {
                 // Charge gaining and Overcharging
                 if(Mathf.chance(chargeChance) && isOvercharging == false && totalCharge < maxCharge){
                     totalCharge += 1;
+                    barUI = totalCharge;
                 }else if (totalCharge >= maxCharge && isOvercharging == false){
                     isOvercharging = true;
                 }
