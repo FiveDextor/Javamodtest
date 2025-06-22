@@ -1,6 +1,8 @@
 package testdex.block;
 
 import mindustry.world.blocks.production.Drill;
+import arc.math;
+import mindustry.ui;
 
 
 public class OverchargeDrill extends Drill {
