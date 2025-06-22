@@ -37,8 +37,6 @@ public class OverchargeDrill extends Drill {
             efficiency = 1;
             if(overloaded) efficiency = 0;
             else if (isOvercharging) efficiency = overchargedTimeMultiplier;
-        @Override
-        public void updateTile(){
             if(timer(timerDump, dumpTime / timeScale)){
                 dump(dominantItem != null && items.has(dominantItem) ? dominantItem : null);
             }
