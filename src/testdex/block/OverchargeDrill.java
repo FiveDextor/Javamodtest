@@ -24,7 +24,6 @@ public class OverchargeDrill extends Drill {
         size = 2;
   }
   @Override
-  @Override
   public void setBars() {
       super.setBars();
       addBar("charge", (OverchargeDrillBuild e) ->
