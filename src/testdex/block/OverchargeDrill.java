@@ -17,6 +17,7 @@ public class OverchargeDrill extends Drill {
   public float overchargeMultiplier= 0.5f;
   // Overcharged time.
   public float overchargeTime = 15 * 60;
+  public float overloadTime = 5 * 60;
 
   public OverchargeDrill(String name) {
         super(name);
@@ -28,17 +29,32 @@ public class OverchargeDrill extends Drill {
         addBar("overcharge", (OverchargeDrillBuild e) ->
            new Bar(() -> Core.bundle.format("bar.charge", e.totalCharge), () -> Pal.ammo, () -> e.totalCharge/maxCharge));
         addBar("timetesting", (OverchargeDrillBuild e) ->
-           new Bar(() -> Core.bundle.format("bar.charge", e.timeTest), () -> Pal.ammo, () -> e.timeTest/overchargeTime));
+           new Bar(() -> Core.bundle.format("bar.charge", e.overchargeTimeC), () -> Pal.ammo, () -> e.overchargeTimeC/overchargeTime));
   }
   public class OverchargeDrillBuild extends DrillBuild {
         public float totalCharge = 0;
         public boolean isOvercharging = false;
         public boolean isOverloading = false;
-        public float timeTest = 0;
+        public float overchargeTimeC = 0;
+        public float overloadTimeC = 0;
+    
         @Override
         public void updateTile(){
-            timeTest += 1;
-            if(timeTest > overchargeTime)timeTest = 0;
+            if(isOvercharging){
+            overchargeTimeC += 1;
+              if(overchargeTimeC > overchargeTime){
+                 overchargeTimeC = 0;
+                 isOvercharging = false;
+                 isOverloading = true;
+              }
+            }
+            if(isOverloading){
+             overloadTimeC += 1;
+              if(overloadTimeC > overloadTime){
+                 overloadTimeC = 0;
+                 isOverloading = false;
+               }
+             }
             if(timer(timerDump, dumpTime / timeScale)){
                 dump(dominantItem != null && items.has(dominantItem) ? dominantItem : null);
             }
@@ -52,7 +68,7 @@ public class OverchargeDrill extends Drill {
             float delay = getDrillTime(dominantItem);
             if(isOvercharging)delay = delay * overchargeMultiplier;
 
-            if(items.total() < itemCapacity && dominantItems > 0 && efficiency > 0){
+            if(items.total() < itemCapacity && dominantItems > 0 && efficiency > 0 && isOverloading == false){
                 float speed = Mathf.lerp(1f, liquidBoostIntensity, optionalEfficiency) * efficiency;
 
                 lastDrillSpeed = (speed * dominantItems * warmup) / delay;
