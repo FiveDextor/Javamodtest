@@ -41,7 +41,7 @@ public class OverchargeDrill extends Drill {
         public void updateTile(){
             if(isOvercharging){
             overchargeTimeC += 1;
-            chargeGuage = totalCharge * ((overchargeTime - overchargeTimeC) / overchargeTime);
+            barUI = totalCharge * ((overchargeTime - overchargeTimeC) / overchargeTime);
               if(overchargeTimeC > overchargeTime){
                  overchargeTimeC = 0;
                  barUI = 0;
