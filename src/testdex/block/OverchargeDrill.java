@@ -14,7 +14,7 @@ public class OverchargeDrill extends Drill {
   // Chance to gain charge per 1 items producing, 1 means always gain charge 0 = ... I don't need to tell that you know?
   public float chargeChance = 1;
   // Overcharged drills speed.
-  public float overchargeDrillTimeMultiplier= 0.5f;
+  public float overchargeMultiplier= 0.5f;
   // Overcharged time.
   public float overchargeTime = 15 * 60;
 
@@ -45,7 +45,7 @@ public class OverchargeDrill extends Drill {
             timeDrilled += warmup * delta();
 
             float delay = getDrillTime(dominantItem);
-            if(isOvercharging)delay = delay * overchargeDrillTimeMultiplier;
+            if(isOvercharging)delay = delay * overchargeMultiplier;
 
             if(items.total() < itemCapacity && dominantItems > 0 && efficiency > 0){
                 float speed = Mathf.lerp(1f, liquidBoostIntensity, optionalEfficiency) * efficiency;
