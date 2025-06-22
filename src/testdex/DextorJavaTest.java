@@ -41,7 +41,7 @@ public class DextorJavaTest extends Mod{
             requirements(Category.production, ItemStack.with());
             size = 3;
             maxCharge = 40;
-            chargeChance = 0.5;
+            chargeChance = 0.5f;
         }};
     }
 }
