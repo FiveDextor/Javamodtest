@@ -26,7 +26,7 @@ public class OverchargeDrill extends Drill {
   public void setBars(){
         super.setBars();
         addBar("overcharge", (OverchargeDrillBuild e) ->
-           new Bar(() -> Core.bundle.format("Charge", e.totalCharge), () -> Pal.ammo, () -> e.totalCharge/maxCharge));
+           new Bar(() -> Core.bundle.format("bar.charge", e.totalCharge), () -> Pal.ammo, () -> e.totalCharge/maxCharge));
   }
   public class OverchargeDrillBuild extends DrillBuild {
         public float totalCharge = 0;
