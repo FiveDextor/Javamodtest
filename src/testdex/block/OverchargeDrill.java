@@ -22,10 +22,10 @@ public class OverchargeDrill extends Drill {
   public class OverchargeDrillBuild extends DrillBuild {
         public float totalCharge = 0;
         public boolean isOvercharged = false;
+        @Override
         public void setBars(){
-            // super.setBars();
-
-            addBar("overcharge", (OverchargeDrillBuild e) ->
+           super.setBars();
+           addBar("overcharge", (OverchargeDrillBuild e) ->
              new Bar(() -> Core.bundle.format("bar.drillspeed", e.totalCharge), () -> Pal.ammo, () -> e.totalCharge/maxCharge));
         }
         @Override
