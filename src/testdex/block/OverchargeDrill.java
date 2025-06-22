@@ -32,8 +32,8 @@ public class OverchargeDrill extends Drill {
         public float totalCharge = 0;
         public boolean isOvercharged = false;
 
-        public void getDrillTime(){
-            
+        public float getOverchargeDrillTime(){
+            return (overchargeDrillTime + hardnessDrillMultiplier * item.hardness) / drillMultipliers.get(item, 1f);
         }
         
         @Override
