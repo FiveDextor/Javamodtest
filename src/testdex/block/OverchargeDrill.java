@@ -25,7 +25,7 @@ public class OverchargeDrill extends Drill {
   }
   @Override
   public void setBars(){
-        chargeGuage = (overchargeTime - overchargeTimeC);
+        public float chargeGuage = (overchargeTime - overchargeTimeC);
 
         super.setBars();
         addBar("charge", (OverchargeDrillBuild e) ->
