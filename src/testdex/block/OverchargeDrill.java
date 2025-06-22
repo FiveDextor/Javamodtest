@@ -13,6 +13,10 @@ public class OverchargeDrill extends Drill {
   public float maxCharge = 10;
   // Chance to gain charge per 1 items producing, 1 means always gain charge 0 = ... I don't need to tell that you know?
   public float chargeChance = 1;
+  // Overcharged drills speed.
+  public float overchargeDrillTime = 300;
+  // Overcharged time.
+  public float overchargeTime = 15 * 60;
 
   public OverchargeDrill(String name) {
         super(name);
@@ -22,7 +26,7 @@ public class OverchargeDrill extends Drill {
   public void setBars(){
         super.setBars();
         addBar("overcharge", (OverchargeDrillBuild e) ->
-           new Bar(() -> Core.bundle.format("bar.drillspeed", e.totalCharge), () -> Pal.ammo, () -> e.totalCharge/maxCharge));
+           new Bar(() -> testdex.bundle.format("bar.drillcharge", e.totalCharge), () -> Pal.ammo, () -> e.totalCharge/maxCharge));
   }
   public class OverchargeDrillBuild extends DrillBuild {
         public float totalCharge = 0;
