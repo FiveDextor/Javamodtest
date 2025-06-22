@@ -22,7 +22,7 @@ public class OverchargeDrill extends Drill {
             super.setBars();
 
             addBar("overcharge", (OverchargeDrillBuild e) ->
-                new Bar(() -> Core.bundle.format("bar.drillspeed", e.totalCharge, () -> Pal.ammo, () -> e.totalCharge/maxCharge));
+             new Bar(() -> Core.bundle.format("bar.drillspeed", e.totalCharge), () -> Pal.ammo, () -> e.totalCharge/maxCharge));
         }
         @Override
         public void updateTile(){
