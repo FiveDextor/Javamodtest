@@ -55,7 +55,7 @@ public class OverchargeDrill extends Drill {
                     offload(dominantItem);
                 }
                 if(Mathf.chance(chargeChance) && isOvercharged == false){
-                    totalCharge += 1
+                    totalCharge += 1;
                 }
 
                 progress %= delay;
