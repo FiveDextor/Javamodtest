@@ -31,6 +31,11 @@ public class OverchargeDrill extends Drill {
   public class OverchargeDrillBuild extends DrillBuild {
         public float totalCharge = 0;
         public boolean isOvercharged = false;
+
+        public void getDrillTime(){
+            
+        }
+        
         @Override
         public void updateTile(){
             if(timer(timerDump, dumpTime / timeScale)){
