@@ -47,6 +47,7 @@ public class OverchargeDrill extends Drill {
               if(overchargeTimeC > overchargeTime){
                  overchargeTimeC = 0;
                  chargeGuage = 0;
+                 totalCharge = 0;
                  isOvercharging = false;
                  isOverloading = true;
               }
