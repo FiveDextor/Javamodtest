@@ -33,15 +33,10 @@ public class OverchargeDrill extends Drill {
         public boolean isOvercharging = false;
         public boolean isOverloading = false;
         @Override
-        public float getDrillTime(){
-          if(isOvercharging == false && isOverloading == false){
-            return (drillTime + hardnessDrillMultiplier * item.hardness) / drillMultipliers.get(item, 1f);
-          }else if(isOvercharging == true && isOverloading == false){
-            return ((drillTime + hardnessDrillMultiplier * item.hardness) * overchargeDrillTimeMultiplier) / drillMultipliers.get(item, 1f);
-          }else
-            return 0;
-        }
-        
+        public void updateTile(){
+            efficiency = 1;
+            if(overloaded) efficiency = 0;
+            else if (isOvercharging) efficiency = overchargedTimeMultiplier;
         @Override
         public void updateTile(){
             if(timer(timerDump, dumpTime / timeScale)){
