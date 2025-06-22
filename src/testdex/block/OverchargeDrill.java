@@ -18,16 +18,15 @@ public class OverchargeDrill extends Drill {
         super(name);
         size = 2;
   }
-
+  @Override
+  public void setBars(){
+        super.setBars();
+        addBar("overcharge", (OverchargeDrillBuild e) ->
+           new Bar(() -> Core.bundle.format("bar.drillspeed", e.totalCharge), () -> Pal.ammo, () -> e.totalCharge/maxCharge));
+  }
   public class OverchargeDrillBuild extends DrillBuild {
         public float totalCharge = 0;
         public boolean isOvercharged = false;
-        @Override
-        public void setBars(){
-           super.setBars();
-           addBar("overcharge", (OverchargeDrillBuild e) ->
-             new Bar(() -> Core.bundle.format("bar.drillspeed", e.totalCharge), () -> Pal.ammo, () -> e.totalCharge/maxCharge));
-        }
         @Override
         public void updateTile(){
             if(timer(timerDump, dumpTime / timeScale)){
