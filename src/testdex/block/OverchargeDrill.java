@@ -2,6 +2,7 @@ package testdex.block;
 
 import mindustry.world.blocks.production.Drill;
 import arc.math.Mathf;
+import arc.Core
 import mindustry.ui.Bar;
 import mindustry.graphics.Pal;
 import mindustry.Vars;
@@ -21,7 +22,6 @@ public class OverchargeDrill extends Drill {
   public class OverchargeDrillBuild extends DrillBuild {
         public float totalCharge = 0;
         public boolean isOvercharged = false;
-        @Override
         public void setBars(){
             // super.setBars();
 
