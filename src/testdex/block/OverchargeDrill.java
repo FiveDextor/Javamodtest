@@ -4,7 +4,7 @@ import mindustry.world.blocks.production.Drill;
 import arc.math.Mathf;
 import mindustry.ui.Bar;
 import mindustry.graphics.Pal;
-import mindustry.core.Core;
+import mindustry.Vars;
 
 
 public class OverchargeDrill extends Drill {
@@ -23,7 +23,7 @@ public class OverchargeDrill extends Drill {
         public boolean isOvercharged = false;
         @Override
         public void setBars(){
-            super.setBars();
+            // super.setBars();
 
             addBar("overcharge", (OverchargeDrillBuild e) ->
              new Bar(() -> Core.bundle.format("bar.drillspeed", e.totalCharge), () -> Pal.ammo, () -> e.totalCharge/maxCharge));
