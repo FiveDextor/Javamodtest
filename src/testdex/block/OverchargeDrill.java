@@ -178,7 +178,8 @@ public class OverchargeDrill extends Drill {
             }
 
             if(drawSpinSprite){
-                Drawf.spinSprite(rotatorRegion, x, y, timeDrilled * rotateSpeed * (1 / overchargeMultiplier));
+              if(isOvercharging)Drawf.spinSprite(rotatorRegion, x, y, timeDrilled * rotateSpeed * (1 / overchargeMultiplier));
+              else Drawf.spinSprite(rotatorRegion, x, y, timeDrilled * rotateSpeed);
             }else{
                 Draw.rect(rotatorRegion, x, y, timeDrilled * rotateSpeed);
             }
