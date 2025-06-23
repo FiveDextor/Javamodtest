@@ -22,7 +22,7 @@ public class OverchargeDrill extends Drill {
   // Chance to gain charge per 1 items producing, 1 means always gain charge 0 = ... I don't need to tell that you know?
   public float chargeChance = 1;
   // Overcharged drills speed.
-  public float overchargeMultiplier= 0.5f;
+  public float overchargeMultiplier = 0.5f;
   // Overcharged time.
   public float overchargeTime = 15 * 60;
   // Overloaded time.
@@ -178,7 +178,7 @@ public class OverchargeDrill extends Drill {
             }
 
             if(drawSpinSprite){
-                Drawf.spinSprite(rotatorRegion, x, y, timeDrilled * rotateSpeed);
+                Drawf.spinSprite(rotatorRegion, x, y, timeDrilled * rotateSpeed * (1 / overchargeMultiplier));
             }else{
                 Draw.rect(rotatorRegion, x, y, timeDrilled * rotateSpeed);
             }
