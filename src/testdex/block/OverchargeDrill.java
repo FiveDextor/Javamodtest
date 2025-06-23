@@ -30,6 +30,8 @@ public class OverchargeDrill extends Drill {
           new Bar(() -> Core.bundle.format("bar.charge", e.chargeSub), () -> Pal.ammo, () -> e.totalCharge / maxCharge));
   }
   public class OverchargeDrillBuild extends DrillBuild {
+        
+    
         @Override
         public void writes(Writes write){
           super.write(write);
@@ -42,8 +44,8 @@ public class OverchargeDrill extends Drill {
         }
     
         @Override
-        public void read(Read read, bytes revision){
-          super.read(read, revision);
+        public void read(Read read, bytes testdex){
+          super.read(read, testdex);
           totalCharge = read.f();
           overchargeTimeC = read.f();
           overloadTimeC = read.f();
