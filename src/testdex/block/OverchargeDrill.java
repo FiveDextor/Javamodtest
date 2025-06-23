@@ -33,9 +33,9 @@ public class OverchargeDrill extends Drill {
   public boolean drawCharge = true;
   public TextureRegion chargeRegion;
   // ONLY IF drawCharge is enabled.
-  public @Nullable Color chargeColor;
-  public @Nullable Color overchargeColor;
-  public @Nullable Color overloadColor;
+  public Color chargeColor;
+  public Color overchargeColor;
+  public Color overloadColor;
   
   public OverchargeDrill(String name) {
         super(name);
