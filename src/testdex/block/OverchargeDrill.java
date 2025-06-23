@@ -75,7 +75,6 @@ public class OverchargeDrill extends Drill {
           isOvercharging = read.bool();
           isOverloading = read.bool();
         }
-        @Override
         public TextureRegion[] icons(){
           return new TextureRegion[]{region, chargeRegion, rotatorRegion, topRegion};
         }
