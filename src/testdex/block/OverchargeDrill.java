@@ -38,7 +38,7 @@ public class OverchargeDrill extends Drill {
         public float chargeSub = 0;
     
         @Override
-        public void writes(Writes write){
+        public void write(Writes write){
           super.write(write);
           write.f(totalCharge);
           write.f(overchargeTimeC);
@@ -49,8 +49,8 @@ public class OverchargeDrill extends Drill {
         }
     
         @Override
-        public void read(Read read, bytes testdex){
-          super.read(read, testdex);
+        public void read(Read read, bytes revision){
+          super.read(read, revision);
           totalCharge = read.f();
           overchargeTimeC = read.f();
           overloadTimeC = read.f();
