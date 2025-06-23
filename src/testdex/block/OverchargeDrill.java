@@ -49,7 +49,12 @@ public class OverchargeDrill extends Drill {
         public float overchargeTimeC = 0;
         public float overloadTimeC = 0;
         public float chargeSub = 0;
-    
+
+        @Override
+        public void load(){
+        super.load();
+            chargeRegion = Core.atlas.find(name + "-charge");
+        }
         @Override
         public void write(Writes write){
           super.write(write);
