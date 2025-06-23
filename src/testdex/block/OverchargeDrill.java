@@ -30,7 +30,7 @@ public class OverchargeDrill extends Drill {
           new Bar(() -> Core.bundle.format("bar.charge", e.chargeSub), () -> Pal.ammo, () -> e.totalCharge / maxCharge));
   }
   public class OverchargeDrillBuild extends DrillBuild {
-        public float totalCharge = 0;Add commentMore actions
+        public float totalCharge = 0;
         public boolean isOvercharging = false;
         public boolean isOverloading = false;
         public float overchargeTimeC = 0;
