@@ -51,7 +51,7 @@ public class OverchargeDrill extends Drill {
         }
     
         @Override
-        public void read(Read read, int revision){
+        public void read(Reads read, byte revision){
           super.read(read, revision);
           totalCharge = read.f();
           overchargeTimeC = read.f();
