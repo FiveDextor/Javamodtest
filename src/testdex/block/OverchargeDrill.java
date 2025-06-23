@@ -12,7 +12,6 @@ import mindustry.graphics.Pal;
 import mindustry.graphics.Layer;
 import arc.graphics.g2d.Draw;
 import mindustry.graphics.Drawf;
-import arc.graphics.g2d.Blending;
 import arc.util.Time;
 
 
@@ -162,14 +161,11 @@ public class OverchargeDrill extends Drill {
             if(drawRim){
                 Draw.color(heatColor);
                 Draw.alpha(warmup * ts * (1f - s + Mathf.absin(Time.time, 3f, s)));
-                Draw.blend(Blending.additive);
                 Draw.rect(rimRegion, x, y);
-                Draw.blend();
                 Draw.color();
             }
             if(drawCharge){
                 Draw.rect(chargeRegion, x, y);
-                Draw.blend();
                 Draw.color();
             }
 
