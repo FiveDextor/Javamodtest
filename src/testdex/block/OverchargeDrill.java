@@ -139,5 +139,38 @@ public class OverchargeDrill extends Drill {
                 if(wasVisible && Mathf.chanceDelta(drillEffectChance * warmup)) drillEffect.at(x + Mathf.range(drillEffectRnd), y + Mathf.range(drillEffectRnd), dominantItem.color);
             }
         }
+        @Override
+        public void draw(){
+            float s = 0.3f;
+            float ts = 0.6f;
+
+            Draw.rect(region, x, y);
+            Draw.z(Layer.blockCracks);
+            drawDefaultCracks();
+
+            Draw.z(Layer.blockAfterCracks);
+            if(drawRim){
+                Draw.color(heatColor);
+                Draw.alpha(warmup * ts * (1f - s + Mathf.absin(Time.time, 3f, s)));
+                Draw.blend(Blending.additive);
+                Draw.rect(rimRegion, x, y);
+                Draw.blend();
+                Draw.color();
+            }
+
+            if(drawSpinSprite){
+                Drawf.spinSprite(rotatorRegion, x, y, timeDrilled * rotateSpeed);
+            }else{
+                Draw.rect(rotatorRegion, x, y, timeDrilled * rotateSpeed);
+            }
+
+            Draw.rect(topRegion, x, y);
+
+            if(dominantItem != null && drawMineItem){
+                Draw.color(dominantItem.color);
+                Draw.rect(itemRegion, x, y);
+                Draw.color();
+            }
+        }
   }
 }
