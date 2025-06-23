@@ -23,7 +23,7 @@ public class OverchargeDrill extends Drill {
   public float chargeChance = 1;
   // Overcharged drills speed.
   public float overchargeMultiplier = 0.5f;
-  // Overcharged time.
+  // Overcharged time should be more than one for wind up speed.
   public float overchargeTime = 15 * 60;
   // Overloaded time.
   public float overloadTime = 5 * 60;
@@ -57,6 +57,7 @@ public class OverchargeDrill extends Drill {
         public float overchargeTimeC = 0;
         public float overloadTimeC = 0;
         public float chargeSub = 0;
+        public float rotChange = 0;
     
         @Override
         public void write(Writes write){
@@ -65,6 +66,7 @@ public class OverchargeDrill extends Drill {
           write.f(overchargeTimeC);
           write.f(overloadTimeC);
           write.f(chargeSub);
+          write.f(rotChange);
           write.bool(isOvercharging);
           write.bool(isOverloading);
         }
@@ -76,6 +78,7 @@ public class OverchargeDrill extends Drill {
           overchargeTimeC = read.f();
           overloadTimeC = read.f();
           chargeSub = read.f();
+          rotChange = read.f();
           isOvercharging = read.bool();
           isOverloading = read.bool();
         }
@@ -86,6 +89,7 @@ public class OverchargeDrill extends Drill {
         @Override
         public void updateTile(){
             if(isOvercharging){
+              if(rotChange < 60)rotChange++;
             overchargeTimeC += 1;
             totalCharge = maxCharge * ((overchargeTime - overchargeTimeC) / overchargeTime);
             chargeSub = Mathf.ceil(maxCharge * ((overchargeTime - overchargeTimeC) / overchargeTime));
@@ -93,6 +97,7 @@ public class OverchargeDrill extends Drill {
                  overchargeTimeC = 0;
                  chargeSub = 0;
                  totalCharge = 0;
+                 rotChange = 0;
                  isOvercharging = false;
                  isOverloading = true;
               }
