@@ -30,7 +30,11 @@ public class OverchargeDrill extends Drill {
   // Additional region for stuffs.
   public boolean drawCharge = true;
   public TextureRegion chargeRegion;
-
+  // ONLY IF drawCharge is enabled.
+  public @Nullable Color chargeColor;
+  public @Nullable Color overchargeColor;
+  public @Nullable Color overloadColor;
+  
   public OverchargeDrill(String name) {
         super(name);
         size = 2;
@@ -166,9 +170,9 @@ public class OverchargeDrill extends Drill {
             }
             if(drawCharge){
                 Draw.rect(chargeRegion, x, y);
-                if(isOverloading)Draw.color(#000000);
-                else if(isOvercharging)Draw.color(#000000);
-                else Draw.color(#000000);
+                if(isOverloading)Draw.color(overloadColor);
+                else if(isOvercharging)Draw.color(overchargeColor);
+                else Draw.color(chargeColor);
             }
 
             if(drawSpinSprite){
