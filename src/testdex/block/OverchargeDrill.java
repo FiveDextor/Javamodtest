@@ -19,7 +19,11 @@ public class OverchargeDrill extends Drill {
   public float overchargeMultiplier= 0.5f;
   // Overcharged time.
   public float overchargeTime = 15 * 60;
+  // Overloaded time.
   public float overloadTime = 5 * 60;
+
+  // Additional region for stuffs.
+  public @Load("@-charge") TextureRegion chargeRegion;
 
   public OverchargeDrill(String name) {
         super(name);
