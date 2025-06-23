@@ -30,12 +30,27 @@ public class OverchargeDrill extends Drill {
           new Bar(() -> Core.bundle.format("bar.charge", e.chargeSub), () -> Pal.ammo, () -> e.totalCharge / maxCharge));
   }
   public class OverchargeDrillBuild extends DrillBuild {
-        public float totalCharge = 0;
-        public boolean isOvercharging = false;
-        public boolean isOverloading = false;
-        public float overchargeTimeC = 0;
-        public float overloadTimeC = 0;
-        public float chargeSub = 0;
+        @Override
+        public void writes(Writes write){
+          super.write(write);
+          write.f(totalCharge);
+          write.f(overchargeTimeC);
+          write.f(overloadTimeC);
+          write.f(chargeSub);
+          write.bool(isOvercharging);
+          write.bool(isOverloading);
+        }
+    
+        @Override
+        public void read(Read read, bytes revision){
+          super.read(read, revision);
+          totalCharge = read.f();
+          overchargeTimeC = read.f();
+          overloadTimeC = read.f();
+          chargeSub = read.f();
+          isOvercharging = read.bool();
+          isOverloading = read.bool();
+        }
     
         @Override
         public void updateTile(){
