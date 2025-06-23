@@ -3,10 +3,10 @@ package testdex.block;
 import mindustry.world.blocks.production.Drill;
 import arc.math.Mathf;
 import arc.Core;
-import arc.util;
 import mindustry.ui.Bar;
 import mindustry.Vars;
-import mindustry.ctype.Load;
+import arc.util.io.Writes;
+import arc.util.io.Reads;
 import arc.graphics.g2d.TextureRegion;
 import mindustry.graphics.Pal;
 import mindustry.graphics.Layer;
@@ -50,7 +50,6 @@ public class OverchargeDrill extends Drill {
         public float overloadTimeC = 0;
         public float chargeSub = 0;
 
-        @Override
         public void load(){
         super.load();
             chargeRegion = Core.atlas.find(name + "-charge");
