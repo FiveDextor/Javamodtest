@@ -3,6 +3,8 @@ package testdex.block;
 import mindustry.world.blocks.production.Drill;
 import arc.math.Mathf;
 import arc.Core;
+import arc.util.io.Reads;
+import arc.util.io.Writes;
 import mindustry.ui.Bar;
 import mindustry.graphics.Pal;
 import mindustry.Vars;
