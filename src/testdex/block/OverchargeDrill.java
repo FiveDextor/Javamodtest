@@ -3,18 +3,12 @@ package testdex.block;
 import mindustry.world.blocks.production.Drill;
 import arc.math.Mathf;
 import arc.Core;
-import arc.util.io.Reads;
-import arc.util.io.Writes;
+import arc.util;
+import arc.graphics.g2d;
 import mindustry.ui.Bar;
-import mindustry.graphics.Pal;
+import mindustry.graphics;
 import mindustry.Vars;
-import arc.graphics.g2d.TextureRegion;
 import mindustry.ctype.Load;
-import mindustry.graphics.Drawf;
-import arc.graphics.g2d.Draw;
-import mindustry.graphics.Layer;
-import arc.graphics.g2d.Blending;
-import arc.util.Time;
 
 
 public class OverchargeDrill extends Drill {
