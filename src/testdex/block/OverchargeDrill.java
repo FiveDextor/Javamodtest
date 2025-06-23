@@ -170,10 +170,10 @@ public class OverchargeDrill extends Drill {
                 Draw.color();
             }
             if(drawCharge){
-                Draw.rect(chargeRegion, x, y);
                 if(isOverloading)Draw.color(overloadColor);
                 else if(isOvercharging)Draw.color(overchargeColor);
                 else Draw.color(chargeColor);
+                Draw.rect(chargeRegion, x, y);
             }
 
             if(drawSpinSprite){
