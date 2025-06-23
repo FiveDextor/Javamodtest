@@ -23,6 +23,7 @@ public class OverchargeDrill extends Drill {
   public float overloadTime = 5 * 60;
 
   // Additional region for stuffs.
+  public boolean drawCharge = true;
   public @Load("@-charge") TextureRegion chargeRegion;
 
   public OverchargeDrill(String name) {
@@ -156,6 +157,11 @@ public class OverchargeDrill extends Drill {
                 Draw.rect(rimRegion, x, y);
                 Draw.blend();
                 Draw.color();
+            }
+            if(drawCharge){
+                Draw.rect(chargeRegion, x, y);
+                Draw.blend();
+                Draw.color()
             }
 
             if(drawSpinSprite){
