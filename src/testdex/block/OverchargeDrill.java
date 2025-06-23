@@ -30,7 +30,7 @@ public class OverchargeDrill extends Drill {
 
   // Additional region for stuffs.
   public boolean drawCharge = true;
-  public @Load("@-charge") TextureRegion chargeRegion;
+  public TextureRegion chargeRegion;
 
   public OverchargeDrill(String name) {
         super(name);
