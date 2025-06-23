@@ -8,6 +8,13 @@ import arc.util.io.Writes;
 import mindustry.ui.Bar;
 import mindustry.graphics.Pal;
 import mindustry.Vars;
+import arc.graphics.g2d.TextureRegion;
+import mindustry.ctype.Load;
+import mindustry.graphics.Drawf;
+import arc.graphics.g2d.Draw;
+import mindustry.graphics.Layer;
+import arc.graphics.g2d.Blending;
+import arc.util.Time;
 
 
 public class OverchargeDrill extends Drill {
