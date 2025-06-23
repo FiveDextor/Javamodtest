@@ -185,12 +185,9 @@ public class OverchargeDrill extends Drill {
             }
 
             if (drawSpinSprite) {
-                float progress = windUp / windUpTime;        // from 0 to 1 over 60 ticks
-                progress = Mathf.clamp(progress);          // ensures [0,1]
-                float multiplier = Mathf.lerp(1f, 2f, progress);
             if (isOvercharging) {
                 Drawf.spinSprite(rotatorRegion, x, y,
-                timeDrilled * rotateSpeed * multiplier);
+                timeDrilled * rotateSpeed * (1 / overchargeMultiplier);
             } else {
                 Drawf.spinSprite(rotatorRegion, x, y,
                 timeDrilled * rotateSpeed);
