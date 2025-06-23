@@ -25,6 +25,8 @@ public class OverchargeDrill extends Drill {
   public float overchargeMultiplier = 0.5f;
   // Overcharged time should be more than one for wind up speed.
   public float overchargeTime = 15 * 60;
+  // Overcharge rotator wind up time.
+  public float windUpTime = 60;
   // Overloaded time.
   public float overloadTime = 5 * 60;
 
@@ -57,7 +59,7 @@ public class OverchargeDrill extends Drill {
         public float overchargeTimeC = 0;
         public float overloadTimeC = 0;
         public float chargeSub = 0;
-        public float rotChange = 0;
+        public float windUp = 0;
     
         @Override
         public void write(Writes write){
@@ -66,7 +68,7 @@ public class OverchargeDrill extends Drill {
           write.f(overchargeTimeC);
           write.f(overloadTimeC);
           write.f(chargeSub);
-          write.f(rotChange);
+          write.f(windUp);
           write.bool(isOvercharging);
           write.bool(isOverloading);
         }
@@ -78,7 +80,7 @@ public class OverchargeDrill extends Drill {
           overchargeTimeC = read.f();
           overloadTimeC = read.f();
           chargeSub = read.f();
-          rotChange = read.f();
+          windUp = read.f();
           isOvercharging = read.bool();
           isOverloading = read.bool();
         }
@@ -89,7 +91,7 @@ public class OverchargeDrill extends Drill {
         @Override
         public void updateTile(){
             if(isOvercharging){
-              if(rotChange < 60)rotChange++;
+              if(windUp < windUpTime)windUp++;
             overchargeTimeC += 1;
             totalCharge = maxCharge * ((overchargeTime - overchargeTimeC) / overchargeTime);
             chargeSub = Mathf.ceil(maxCharge * ((overchargeTime - overchargeTimeC) / overchargeTime));
@@ -97,7 +99,7 @@ public class OverchargeDrill extends Drill {
                  overchargeTimeC = 0;
                  chargeSub = 0;
                  totalCharge = 0;
-                 rotChange = 0;
+                 windUp = 0;
                  isOvercharging = false;
                  isOverloading = true;
               }
@@ -183,7 +185,9 @@ public class OverchargeDrill extends Drill {
             }
 
             if(drawSpinSprite){
-              if(isOvercharging)Drawf.spinSprite(rotatorRegion, x, y, timeDrilled * rotateSpeed * (1 / overchargeMultiplier));
+              float overchargeBoost = 1 / overchargeMultiplier;
+              float windUpBoost = windUp / windUpTime;
+              if(isOvercharging)Drawf.spinSprite(rotatorRegion, x, y, timeDrilled * rotateSpeed * (overchargeBoost - (1 - winpUpBoost)));
               else Drawf.spinSprite(rotatorRegion, x, y, timeDrilled * rotateSpeed);
             }else{
                 Draw.rect(rotatorRegion, x, y, timeDrilled * rotateSpeed);
