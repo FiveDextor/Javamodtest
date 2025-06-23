@@ -1,7 +1,7 @@
 package testdex.block;
 
-import mindustry.world.blocks.turrets.ItemTurret;
+import mindustry.world.blocks.defense.turrets.ItemTurret;
 
-public class ChargeTurret extends itemTurret {
+public class ChargeTurret extends ItemTurret {
   
 }
