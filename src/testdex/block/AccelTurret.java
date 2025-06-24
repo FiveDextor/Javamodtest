@@ -8,6 +8,8 @@ import mindustry.entities.bullet.BulletType;
 public class AccelTurret extends ItemTurret {
     public float maxCharge = 60;
     public float multiplier = 1;
+    public float chargeRemoveTime = 30;
+    public float chargeRemoveAmount = 2;
 
     public AccelTurret(String name) {
         super(name);
