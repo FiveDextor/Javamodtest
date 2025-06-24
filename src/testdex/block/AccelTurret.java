@@ -16,7 +16,6 @@ public class AccelTurret extends ItemTurret {
     public class ItemTurretBuild extends TurretBuild {
         public float charge = 0;
 
-        @Override
         public float ammoReloadMultiplier() {
            return 1.0f;
         }
