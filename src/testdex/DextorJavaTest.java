@@ -63,22 +63,6 @@ public class DextorJavaTest extends Mod{
                 hitEffect = despawnEffect = Fx.hitSquaresColor;
                 buildingDamageMultiplier = 0.2f;
             }},
-                ammo(
-            Items.graphite, new BasicBulletType(8f, 41){{
-                knockback = 4f;
-                width = 25f;
-                hitSize = 7f;
-                height = 20f;
-                shootEffect = Fx.shootBigColor;
-                smokeEffect = Fx.shootSmokeSquareSparse;
-                ammoMultiplier = 1;
-                hitColor = backColor = trailColor = Color.valueOf("ea8878");
-                frontColor = Pal.redLight;
-                trailWidth = 6f;
-                trailLength = 3;
-                hitEffect = despawnEffect = Fx.hitSquaresColor;
-                buildingDamageMultiplier = 0.2f;
-            }},
             Items.oxide, new BasicBulletType(8f, 120){{
                 knockback = 3f;
                 width = 25f;
