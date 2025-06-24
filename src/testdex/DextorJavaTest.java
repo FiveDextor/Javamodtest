@@ -49,7 +49,7 @@ import mindustry.type.Liquids;
 import mindustry.entities.effect.Fx;
 import mindustry.graphics.Pal;
 import mindustry.world.blocks.defense.turrets.ShootSpread;
-import arc.graphics.Color
+import arc.graphics.Color;
 import testdex.block.OverchargeDrill;
 import testdex.block.AccelTurret;
 
