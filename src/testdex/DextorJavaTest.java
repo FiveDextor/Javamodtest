@@ -47,6 +47,7 @@ public class DextorJavaTest extends Mod{
         AccelTurret customAccelTurret = new AccelTurret("accel-turret"){{
             requirements(Category.turret, with());
             maxCharge = 15
+            size = 3;
             ammo(
             Items.graphite, new BasicBulletType(8f, 41){{
                 knockback = 4f;
