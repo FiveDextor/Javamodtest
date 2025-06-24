@@ -1,10 +1,13 @@
 package testdex.block;
 
-import mindustry.world.blocks.defense.turrets.ItemTurret;
-
-public class ShipCenter extends ItemTurret {
+import mindustry.world.blocks.units.UnitCargoLoader
+  
+public class ShipCenter extends UnitCargoLoader{
   public ShipCenter(String name) {
         super(name);
         size = 2;
+  }
+  public class ShipCenterBuild extends UnitCargoLoaderBuild{
+    
   }
 }
