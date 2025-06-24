@@ -1,6 +1,6 @@
 package testdex.block;
 
-import mindustry.world.blocks.units.UnitCargoLoader
+import mindustry.world.blocks.units.UnitCargoLoader;
   
 public class ShipCenter extends UnitCargoLoader{
   public ShipCenter(String name) {
