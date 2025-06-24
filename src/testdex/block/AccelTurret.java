@@ -13,12 +13,8 @@ public class AccelTurret extends ItemTurret {
         super(name);
     }
 
-    public class ItemTurretBuild extends TurretBuild {
+    public class AccelTurretBuild extends ItemTurretBuild {
         public float charge = 0;
-
-        public float ammoReloadMultiplier() {
-           return 1.0f;
-        }
 
         @Override
         protected void updateReload() {
@@ -35,7 +31,7 @@ public class AccelTurret extends ItemTurret {
                 shoot(type);
 
                 reloadCounter %= reload;
-                charge += 1;
+                if(charge < maxCharge)charge += 1;
             }
         }
     }
