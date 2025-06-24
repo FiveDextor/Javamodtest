@@ -43,7 +43,13 @@ import mindustry.world.blocks.defense.turrets.TurretBuild;
 import mindustry.entities.effect.Fx;
 import mindustry.type.Item;
 import mindustry.world.blocks.defense.turrets.ShootSpread;
-
+import mindustry.entities.part.PartProgress;
+import mindustry.entities.part.PartMove;
+import mindustry.type.Liquids;
+import mindustry.entities.effect.Fx;
+import mindustry.graphics.Pal;
+import mindustry.world.blocks.defense.turrets.ShootSpread;
+import arc.graphics.Color
 import testdex.block.OverchargeDrill;
 import testdex.block.AccelTurret;
 
@@ -75,7 +81,7 @@ public class DextorJavaTest extends Mod{
             chargeChance = 0.5f;
         }};
         AccelTurret customAccelTurret = new AccelTurret("accel-turret"){{
-            requirements(Category.turret, with());
+            requirements(Category.turret, ItemStack.with());
             maxCharge = 15;
             ammo(
             Items.graphite, new BasicBulletType(8f, 41){{
