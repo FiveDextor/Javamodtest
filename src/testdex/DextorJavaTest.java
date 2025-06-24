@@ -88,7 +88,7 @@ public class DextorJavaTest extends Mod{
                 smokeEffect = Fx.shootSmokeSquareSparse;
                 ammoMultiplier = 1;
                 hitColor = backColor = trailColor = Pal.graphiteAmmoBack;
-                frontColor = Pal.graphiteAmmoFront;
+                frontColor = Color.valueOf("e4ffd6");
                 trailWidth = 6f;
                 trailLength = 6;
                 hitEffect = despawnEffect = Fx.hitSquaresColor;
