@@ -53,14 +53,11 @@ public class DextorJavaTest extends Mod{
                 width = 25f;
                 hitSize = 7f;
                 height = 20f;
-                shootEffect = Fx.shootBigColor;
-                smokeEffect = Fx.shootSmokeSquareSparse;
                 ammoMultiplier = 1;
                 hitColor = backColor = trailColor = Color.valueOf("ea8878");
-                frontColor = Pal.redLight;
+                frontColor = Color.valueOf("ff0000");
                 trailWidth = 6f;
                 trailLength = 3;
-                hitEffect = despawnEffect = Fx.hitSquaresColor;
                 buildingDamageMultiplier = 0.2f;
             }},
             Items.oxide, new BasicBulletType(8f, 120){{
@@ -68,14 +65,11 @@ public class DextorJavaTest extends Mod{
                 width = 25f;
                 hitSize = 7f;
                 height = 20f;
-                shootEffect = Fx.shootBigColor;
-                smokeEffect = Fx.shootSmokeSquareSparse;
                 ammoMultiplier = 2;
                 hitColor = backColor = trailColor = Color.valueOf("a0b380");
                 frontColor = Color.valueOf("e4ffd6");
                 trailWidth = 6f;
                 trailLength = 3;
-                hitEffect = despawnEffect = Fx.hitSquaresColor;
                 buildingDamageMultiplier = 0.2f;
             }},
             Items.silicon, new BasicBulletType(8f, 35){{
@@ -84,14 +78,11 @@ public class DextorJavaTest extends Mod{
                 hitSize = 7f;
                 height = 20f;
                 homingPower = 0.045f;
-                shootEffect = Fx.shootBigColor;
-                smokeEffect = Fx.shootSmokeSquareSparse;
                 ammoMultiplier = 1;
-                hitColor = backColor = trailColor = Pal.graphiteAmmoBack;
+                hitColor = backColor = trailColor = Color.valueOf("a0b380");
                 frontColor = Color.valueOf("e4ffd6");
                 trailWidth = 6f;
                 trailLength = 6;
-                hitEffect = despawnEffect = Fx.hitSquaresColor;
                 buildingDamageMultiplier = 0.2f;
             }}
             );
@@ -108,10 +99,7 @@ public class DextorJavaTest extends Mod{
             consumeAmmoOnce = true;
             targetUnderBlocks = false;
 
-            shootSound = Sounds.shootAltLong;
-
             shootY = 5f;
-            outlineColor = Pal.darkOutline;
             size = 3;
             envEnabled |= Env.space;
             reload = 30f;
