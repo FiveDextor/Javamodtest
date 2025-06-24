@@ -10,6 +10,7 @@ import mindustry.mod.*;
 import mindustry.ui.dialogs.*;
 import mindustry.entities.bullet.*;
 import arc.Core;
+import arc.graphics.Color;
 import mindustry.Vars;
 import mindustry.content.Items;
 import mindustry.type.Category;
