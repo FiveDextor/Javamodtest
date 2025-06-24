@@ -44,5 +44,24 @@ public class DextorJavaTest extends Mod{
             maxCharge = 40;
             chargeChance = 0.5f;
         }};
+        AccelTurret customAccelTurret = new AccelTurret("accel-turret"){{
+            requirements(Category.turret, with());
+            maxCharge = 15
+            ammo(
+            Items.graphite, new BasicBulletType(8f, 41){{
+                knockback = 4f;
+                width = 25f;
+                hitSize = 7f;
+                height = 20f;
+                shootEffect = Fx.shootBigColor;
+                smokeEffect = Fx.shootSmokeSquareSparse;
+                ammoMultiplier = 1;
+                hitColor = backColor = trailColor = Color.valueOf("ea8878");
+                frontColor = Pal.redLight;
+                trailWidth = 6f;
+                trailLength = 3;
+                hitEffect = despawnEffect = Fx.hitSquaresColor;
+                buildingDamageMultiplier = 0.2f;
+            }},
     }
 }
