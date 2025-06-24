@@ -47,7 +47,6 @@ public class DextorJavaTest extends Mod{
         AccelTurret customAccelTurret = new AccelTurret("accel-turret"){{
             requirements(Category.turret, with());
             maxCharge = 15;
-            size = 3;
             ammo(
             Items.graphite, new BasicBulletType(8f, 41){{
                 knockback = 4f;
@@ -64,5 +63,91 @@ public class DextorJavaTest extends Mod{
                 hitEffect = despawnEffect = Fx.hitSquaresColor;
                 buildingDamageMultiplier = 0.2f;
             }},
+                ammo(
+            Items.graphite, new BasicBulletType(8f, 41){{
+                knockback = 4f;
+                width = 25f;
+                hitSize = 7f;
+                height = 20f;
+                shootEffect = Fx.shootBigColor;
+                smokeEffect = Fx.shootSmokeSquareSparse;
+                ammoMultiplier = 1;
+                hitColor = backColor = trailColor = Color.valueOf("ea8878");
+                frontColor = Pal.redLight;
+                trailWidth = 6f;
+                trailLength = 3;
+                hitEffect = despawnEffect = Fx.hitSquaresColor;
+                buildingDamageMultiplier = 0.2f;
+            }},
+            Items.oxide, new BasicBulletType(8f, 120){{
+                knockback = 3f;
+                width = 25f;
+                hitSize = 7f;
+                height = 20f;
+                shootEffect = Fx.shootBigColor;
+                smokeEffect = Fx.shootSmokeSquareSparse;
+                ammoMultiplier = 2;
+                hitColor = backColor = trailColor = Color.valueOf("a0b380");
+                frontColor = Color.valueOf("e4ffd6");
+                trailWidth = 6f;
+                trailLength = 3;
+                hitEffect = despawnEffect = Fx.hitSquaresColor;
+                buildingDamageMultiplier = 0.2f;
+            }},
+            Items.silicon, new BasicBulletType(8f, 35){{
+                knockback = 3f;
+                width = 25f;
+                hitSize = 7f;
+                height = 20f;
+                homingPower = 0.045f;
+                shootEffect = Fx.shootBigColor;
+                smokeEffect = Fx.shootSmokeSquareSparse;
+                ammoMultiplier = 1;
+                hitColor = backColor = trailColor = Pal.graphiteAmmoBack;
+                frontColor = Pal.graphiteAmmoFront;
+                trailWidth = 6f;
+                trailLength = 6;
+                hitEffect = despawnEffect = Fx.hitSquaresColor;
+                buildingDamageMultiplier = 0.2f;
+            }}
+            );
+
+            shoot = new ShootSpread(15, 4f);
+
+            coolantMultiplier = 15f;
+
+            inaccuracy = 0.2f;
+            velocityRnd = 0.17f;
+            shake = 1f;
+            ammoPerShot = 3;
+            maxAmmo = 30;
+            consumeAmmoOnce = true;
+            targetUnderBlocks = false;
+
+            shootSound = Sounds.shootAltLong;
+
+            drawer = new DrawTurret("reinforced-"){{
+                parts.add(new RegionPart("-front"){{
+                    progress = PartProgress.warmup;
+                    moveRot = -10f;
+                    mirror = true;
+                    moves.add(new PartMove(PartProgress.recoil, 0f, -3f, -5f));
+                    heatColor = Color.red;
+                }});
+            }};
+            shootY = 5f;
+            outlineColor = Pal.darkOutline;
+            size = 3;
+            envEnabled |= Env.space;
+            reload = 30f;
+            recoil = 2f;
+            range = 125;
+            shootCone = 40f;
+            scaledHealth = 210;
+            rotateSpeed = 3f;
+
+            coolant = consume(new ConsumeLiquid(Liquids.water, 15f / 60f));
+            limitRange(25f);
+        }};
     }
 }
