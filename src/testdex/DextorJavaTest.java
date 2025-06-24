@@ -23,8 +23,29 @@ import mindustry.type.Liquids;
 import mindustry.world.consumers.ConsumeLiquid;
 import mindustry.Vars;
 import mindustry.world.meta.Env;
+import mindustry.entities.bullet.BasicBulletType;
+import mindustry.entities.part.PartMove;
+import mindustry.entities.part.PartProgress;
+import mindustry.entities.part.RegionPart;
+import mindustry.gen.Sounds;
+import mindustry.graphics.Pal;
+import mindustry.type.Liquids;
+import mindustry.type.ItemStack;
+import mindustry.world.consumers.ConsumeLiquid;
+import mindustry.world.draw.DrawTurret;
+import mindustry.world.meta.Env;
+import mindustry.world.meta.BuildVisibility;
+import mindustry.world.meta.Stat;
+import mindustry.world.meta.StatUnit;
+import mindustry.world.blocks.defense.turrets.Turret;
+import mindustry.world.blocks.production.Drill;
+import mindustry.world.blocks.defense.turrets.TurretBuild;
+import mindustry.entities.effect.Fx;
+import mindustry.type.Item;
+import mindustry.world.blocks.defense.turrets.ShootSpread;
 
 import testdex.block.OverchargeDrill;
+import testdex.block.AccelTurret;
 
 public class DextorJavaTest extends Mod{
 
