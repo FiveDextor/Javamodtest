@@ -15,6 +15,7 @@ import mindustry.Vars;
 import mindustry.content.Items;
 import mindustry.type.Category;
 import mindustry.type.ItemStack;
+import mindustry.entities.pattern.*;
 
 import testdex.block.OverchargeDrill;
 import testdex.block.AccelTurret;
@@ -103,7 +104,6 @@ public class DextorJavaTest extends Mod{
 
             shootY = 5f;
             size = 3;
-            envEnabled |= Env.space;
             reload = 30f;
             recoil = 2f;
             range = 125;
