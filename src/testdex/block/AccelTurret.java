@@ -19,6 +19,19 @@ public class AccelTurret extends ItemTurret {
 
             //cap reload for visual reasons
             reloadCounter = Math.min(reloadCounter,reload / (1 + multiplier * charge / maxCharge));
+     }
   }
+
+  @Override
+  protected void updateShooting(){
+
+            if(reloadCounter >= reload / (1 + multiplier * charge / maxCharge) && !charging() && shootWarmup >= minWarmup){
+                BulletType type = peekAmmo();
+
+                shoot(type);
+
+                reloadCounter %= reload;
+                charge += 1;
+            }
   }
 }
