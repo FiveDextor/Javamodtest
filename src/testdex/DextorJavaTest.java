@@ -146,15 +146,6 @@ public class DextorJavaTest extends Mod{
 
             shootSound = Sounds.shootAltLong;
 
-            drawer = new DrawTurret("reinforced-"){{
-                parts.add(new RegionPart("-front"){{
-                    progress = PartProgress.warmup;
-                    moveRot = -10f;
-                    mirror = true;
-                    moves.add(new PartMove(PartProgress.recoil, 0f, -3f, -5f));
-                    heatColor = Color.red;
-                }});
-            }};
             shootY = 5f;
             outlineColor = Pal.darkOutline;
             size = 3;
@@ -165,9 +156,6 @@ public class DextorJavaTest extends Mod{
             shootCone = 40f;
             scaledHealth = 210;
             rotateSpeed = 3f;
-
-            coolant = consume(new ConsumeLiquid(Liquids.water, 15f / 60f));
-            limitRange(25f);
         }};
     }
 }
