@@ -6,6 +6,7 @@ public class ShipCenter extends UnitCargoLoader{
   public ShipCenter(String name) {
         super(name);
         size = 2;
+        UnitType = flare;
   }
   public class UnitPayloadSourceBuild extends UnitTransportSourceBuild{
     @Override
