@@ -7,7 +7,7 @@ public class ShipCenter extends UnitCargoLoader{
         super(name);
         size = 2;
   }
-  public class ShipCenterBuild extends UnitCargoLoaderBuild{
+  public class UnitPayloadSourceBuild extends UnitTransportSourceBuild{
     
   }
 }
