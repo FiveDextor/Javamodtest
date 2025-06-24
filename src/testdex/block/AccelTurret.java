@@ -17,6 +17,11 @@ public class AccelTurret extends ItemTurret {
         public float charge = 0;
 
         @Override
+        public float ammoReloadMultiplier() {
+           return 1.0f;
+        }
+
+        @Override
         protected void updateReload() {
             reloadCounter += delta() * ammoReloadMultiplier() * baseReloadSpeed();
             //cap reload for visual reasons
