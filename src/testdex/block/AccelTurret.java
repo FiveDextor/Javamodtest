@@ -17,9 +17,27 @@ public class AccelTurret extends ItemTurret {
 
     public class AccelTurretBuild extends ItemTurretBuild {
         public float charge = 0;
+        public float chargeRemove = 0;
 
         protected float ammoReloadMultiplier(){
             return hasAmmo() ? peekAmmo().reloadMultiplier : 1f;
+        }
+
+        @Override
+        public void updateTile(){
+            if(!wasShooting && charge != 0){
+                if(chargeRemove < chargeRemoveTime){
+                    chargeRemove++;
+                }else{
+                    charge -= chargeRemoveAmount;
+                    chargeRemove = 0;
+                    if(charge < 0)charge = 0;
+                }
+            }else{
+                chargeRemove = 0;
+            }
+
+            super.updateTile();
         }
 
         @Override
