@@ -1,7 +1,9 @@
 package testdex.block;
 
 import mindustry.world.blocks.defense.turrets.ItemTurret;
+import mindustry.world.blocks.defense.turrets.Turret;
 import arc.math.Mathf;
+import mindustry.entities.bullet.BulletType;
 
 public class AccelTurret extends ItemTurret {
     public float maxCharge = 60;
