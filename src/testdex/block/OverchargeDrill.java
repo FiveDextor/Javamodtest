@@ -8,7 +8,7 @@ import mindustry.Vars;
 import arc.util.io.Writes;
 import arc.util.io.Reads;
 import arc.graphics.g2d.TextureRegion;
-import mindustry.graphics.Pal;
+import testdex.graphics.Pal;
 import mindustry.graphics.Layer;
 import arc.graphics.g2d.Draw;
 import mindustry.graphics.Drawf;
