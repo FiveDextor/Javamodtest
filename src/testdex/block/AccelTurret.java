@@ -7,7 +7,7 @@ import mindustry.entities.bullet.BulletType;
 import mindustry.ui.Bar;
 import mindustry.Vars;
 import mindustry.ui.Styles;
-import mindustry.gen.Pal;
+import mindustry.graphics.Pal;
 import arc.Core;
 
 public class AccelTurret extends ItemTurret {
@@ -22,7 +22,7 @@ public class AccelTurret extends ItemTurret {
 
     public void setBars() {
       super.setBars();
-      addBar("charge", (OverchargeDrillBuild e) ->
+      addBar("charge", (AccelTurretBuild e) ->
           new Bar(() -> Core.bundle.format("bar.charge", e.charge), () -> Pal.ammo, () -> e.charge / maxCharge));
     }
 
