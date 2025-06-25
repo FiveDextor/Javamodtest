@@ -30,7 +30,7 @@ import mindustry.service.*;
 import mindustry.ui.dialogs.*;
 import mindustry.world.*;
 import mindustry.world.meta.*;
-import mindustry.control.Keybinds;
+import mindustry.control.KeyBind;
 import mindustry.control.Binding;
 
 import java.io.*;
