@@ -40,7 +40,7 @@ public class AccelTurret extends ItemTurret {
         @Override
         public void write(Writes write){
           super.write(write);
-          weite.f(charge);
+          write.f(charge);
           write.f(chargeRemove);
         }
     
