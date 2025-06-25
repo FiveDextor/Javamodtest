@@ -37,6 +37,20 @@ public class AccelTurret extends ItemTurret {
         public float charge = 0;
         public float chargeRemove = 0;
 
+        @Override
+        public void write(Writes write){
+          super.write(write);
+          weite.f(charge);
+          write.f(chargeRemove);
+        }
+    
+        @Override
+        public void read(Reads read, byte revision){
+          super.read(read, revision);
+          charge = read.f();
+          chargeRemove = read.f();
+        }
+
         protected float ammoReloadMultiplier(){
             return hasAmmo() ? peekAmmo().reloadMultiplier : 1f;
         }
