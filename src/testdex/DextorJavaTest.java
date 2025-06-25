@@ -20,6 +20,7 @@ import mindustry.entities.part.DrawPart.*;
 import mindustry.entities.part.*;
 import mindustry.entities.pattern.*;
 import mindustry.graphics.Pal;
+import mindustry.entities.effect.*;
 
 import testdex.block.OverchargeDrill;
 import testdex.block.AccelTurret;
