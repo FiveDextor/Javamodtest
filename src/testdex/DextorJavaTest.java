@@ -22,6 +22,8 @@ import mindustry.entities.pattern.*;
 import mindustry.graphics.Pal;
 import mindustry.entities.effect.*;
 import mindustry.world.consumers.*;
+import mindustry.world.draw.*;
+import mindustry.world.meta.*;
 
 import testdex.block.OverchargeDrill;
 import testdex.block.AccelTurret;
