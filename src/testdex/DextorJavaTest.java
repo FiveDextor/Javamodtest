@@ -19,7 +19,7 @@ import mindustry.entities.pattern.*;
 import mindustry.entities.part.DrawPart.*;
 import mindustry.entities.part.*;
 import mindustry.entities.pattern.*;
-import mindustry.graphics.Pal;
+import testdex.graphics.Pal;
 import mindustry.entities.effect.*;
 import mindustry.world.consumers.*;
 import mindustry.world.draw.*;
