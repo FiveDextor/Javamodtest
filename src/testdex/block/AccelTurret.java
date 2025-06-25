@@ -8,6 +8,8 @@ import mindustry.ui.Bar;
 import testdex.Vars;
 import mindustry.ui.Styles;
 import testdex.graphics.Pal;
+import mindustry.world.consumers.ConsumeLiquidFilter;
+import mindustry.type.Liquid;
 import arc.Core;
 
 public class AccelTurret extends ItemTurret {
@@ -44,7 +46,7 @@ public class AccelTurret extends ItemTurret {
                 reloadCounter += amount * edelta() * capacity * coolantMultiplier * ammoReloadMultiplier() * (1 - (coolantIneffMultiplier - (charge / maxCharge)));
 
                 if(Mathf.chance(0.06 * amount)){
-                    coolEffect.at(x + Mathf.range(size * tilesize / 2f), y + Mathf.range(size * tilesize / 2f));
+                    coolEffect.at(x + Mathf.range(size * Vars.tilesize / 2f), y + Mathf.range(size * tilesize / 2f));
                 }
             }
         }
