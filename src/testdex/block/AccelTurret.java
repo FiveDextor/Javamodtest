@@ -15,6 +15,12 @@ public class AccelTurret extends ItemTurret {
         super(name);
     }
 
+    public void setBars() {
+      super.setBars();
+      addBar("charge", (OverchargeDrillBuild e) ->
+          new Bar(() -> Core.bundle.format("bar.charge", e.charge), () -> Pal.ammo, () -> e.charge / maxCharge));
+    }
+
     public class AccelTurretBuild extends ItemTurretBuild {
         public float charge = 0;
         public float chargeRemove = 0;
