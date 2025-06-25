@@ -5,7 +5,7 @@ import mindustry.world.blocks.defense.turrets.Turret.*;
 import arc.math.Mathf;
 import mindustry.entities.bullet.BulletType;
 import mindustry.ui.Bar;
-import mindustry.Vars;
+import testdex.Vars;
 import mindustry.ui.Styles;
 import testdex.graphics.Pal;
 import arc.Core;
