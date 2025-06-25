@@ -48,7 +48,7 @@ public class AccelTurret extends ItemTurret {
                 reloadCounter += amount * edelta() * capacity * coolantMultiplier * ammoReloadMultiplier() * (1 - (coolantIneffMultiplier - (charge / maxCharge)));
 
                 if(Mathf.chance(0.06 * amount)){
-                    coolEffect.at(x + Mathf.range(size * Vars.tilesize / 2f), y + Mathf.range(size * tilesize / 2f));
+                    coolEffect.at(x + Mathf.range(size * tilesize / 2f), y + Mathf.range(size * tilesize / 2f));
                 }
             }
         }
