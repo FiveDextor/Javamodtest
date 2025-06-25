@@ -41,7 +41,7 @@ public class AccelTurret extends ItemTurret {
                 float capacity = coolant instanceof ConsumeLiquidFilter filter ? filter.getConsumed(this).heatCapacity : (coolant.consumes(liquids.current()) ? liquids.current().heatCapacity : 0.4f);
                 float amount = coolant.amount * coolant.efficiency(this);
                 coolant.update(this);
-                reloadCounter += amount * edelta() * capacity * coolantMultiplier * ammoReloadMultiplier() * (1 - (coolantIneffMultiplier - (charge / maxCharge));
+                reloadCounter += amount * edelta() * capacity * coolantMultiplier * ammoReloadMultiplier() * (1 - (coolantIneffMultiplier - (charge / maxCharge)));
 
                 if(Mathf.chance(0.06 * amount)){
                     coolEffect.at(x + Mathf.range(size * tilesize / 2f), y + Mathf.range(size * tilesize / 2f));
