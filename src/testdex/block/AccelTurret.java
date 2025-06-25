@@ -7,7 +7,7 @@ import mindustry.entities.bullet.BulletType;
 import mindustry.ui.Bar;
 import mindustry.Vars;
 import mindustry.ui.Styles;
-import mindustry.graphics.Pal;
+import testdex.graphics.Pal;
 import arc.Core;
 
 public class AccelTurret extends ItemTurret {
