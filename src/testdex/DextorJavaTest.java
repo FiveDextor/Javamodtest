@@ -109,6 +109,7 @@ public class DextorJavaTest extends Mod{
             shoot = new ShootSpread(15, 4f);
 
             coolantMultiplier = 15f;
+            coolantIneffMultiplier = 0.5f;
 
             inaccuracy = 0.2f;
             velocityRnd = 0.17f;
