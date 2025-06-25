@@ -15,6 +15,7 @@ public class AccelTurret extends ItemTurret {
     public float multiplier = 1;
     public float chargeRemoveTime = 30;
     public float chargeRemoveAmount = 2;
+    public float coolantIneffMultiplier = 1;
 
     public AccelTurret(String name) {
         super(name);
@@ -32,6 +33,20 @@ public class AccelTurret extends ItemTurret {
 
         protected float ammoReloadMultiplier(){
             return hasAmmo() ? peekAmmo().reloadMultiplier : 1f;
+        }
+
+        @Override
+        protected void updateCooling(){
+            if(reloadCounter < reload && coolant != null && coolant.efficiency(this) > 0 && efficiency > 0){
+                float capacity = coolant instanceof ConsumeLiquidFilter filter ? filter.getConsumed(this).heatCapacity : (coolant.consumes(liquids.current()) ? liquids.current().heatCapacity : 0.4f);
+                float amount = coolant.amount * coolant.efficiency(this);
+                coolant.update(this);
+                reloadCounter += amount * edelta() * capacity * coolantMultiplier * ammoReloadMultiplier() * (1 - (coolantIneffMultiplier - (charge / maxCharge));
+
+                if(Mathf.chance(0.06 * amount)){
+                    coolEffect.at(x + Mathf.range(size * tilesize / 2f), y + Mathf.range(size * tilesize / 2f));
+                }
+            }
         }
 
         @Override
