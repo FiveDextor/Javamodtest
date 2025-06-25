@@ -4,6 +4,11 @@ import mindustry.world.blocks.defense.turrets.ItemTurret;
 import mindustry.world.blocks.defense.turrets.Turret.*;
 import arc.math.Mathf;
 import mindustry.entities.bullet.BulletType;
+import mindustry.ui.Bar;
+import mindustry.Vars;
+import mindustry.ui.Styles;
+import mindustry.gen.Pal;
+import arc.Core;
 
 public class AccelTurret extends ItemTurret {
     public float maxCharge = 60;
