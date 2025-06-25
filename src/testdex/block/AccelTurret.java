@@ -5,12 +5,14 @@ import mindustry.world.blocks.defense.turrets.Turret.*;
 import arc.math.Mathf;
 import mindustry.entities.bullet.BulletType;
 import mindustry.ui.Bar;
-import mindustry.Vars;
 import mindustry.ui.Styles;
 import testdex.graphics.Pal;
+import mindustry.world.meta.*;
 import mindustry.world.consumers.ConsumeLiquidFilter;
 import mindustry.type.Liquid;
 import arc.Core;
+
+import static mindustry.Vars.*;
 
 public class AccelTurret extends ItemTurret {
     public float maxCharge = 60;
