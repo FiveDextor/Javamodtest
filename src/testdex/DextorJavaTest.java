@@ -141,6 +141,9 @@ public class DextorJavaTest extends Mod{
 
             coolant = consume(new ConsumeLiquid(Liquids.water, 15f / 60f));
             limitRange(25f);
+
+            maxCharge = 30;
+            multiplier = 3;
         }};
     }
 }
