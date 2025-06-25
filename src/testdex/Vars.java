@@ -1,4 +1,4 @@
-package mindustry;
+package testdex;
 
 import arc.*;
 import arc.assets.*;
